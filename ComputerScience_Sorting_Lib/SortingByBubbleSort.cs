@@ -6,6 +6,9 @@ namespace ComputerScience_Sorting_Lib
     {
         public void TestSorting_TimesToComplete()
         {
+            //
+            // Added 3/1/2020 thomas downes 
+            //
             Double ms_ForArrayLengthN_20 = 0;
             Double ms_ForArrayLengthN_50 = 0;
             Double ms_ForArrayLengthN_100 = 0;
@@ -40,31 +43,36 @@ namespace ComputerScience_Sorting_Lib
 
         public double Sort_ReturnMilliseconds(int[] param_array)
         {
+            //
+            // Added 3/1/2020 thomas downes 
+            //
+            //    https://sorting.at   
+            //
             //throw new NotImplementedException();
 
             DateTime timeStart = DateTime.Now;
             DateTime timeFinish = DateTime.MaxValue; 
-            int intCountBubbleSteps = -1;
+            int intCountInversions = -1;
             bool bOutOfOrder = false;
             int intTemp = 0; 
 
             do
             {
-                intCountBubbleSteps = 0; //Reinitialize. 
+                intCountInversions = 0; //Reinitialize. 
 
                  for (int indexItem = 0; indexItem < -1 + param_array.Length; indexItem++)
                 {
                     bOutOfOrder = (param_array[indexItem] > param_array[indexItem + 1]);
                     if (bOutOfOrder)
                     {
-                        intCountBubbleSteps++;
+                        intCountInversions++;
                         intTemp = param_array[indexItem];
                         param_array[indexItem] = param_array[indexItem + 1];
                         param_array[indexItem + 1] = intTemp;
                     }
                 }
 
-            } while (intCountBubbleSteps != 0);
+            } while (intCountInversions != 0);
 
             //return param_array;
 
