@@ -7,6 +7,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ComputerScience_Sorting_App
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ComputerScience_Sorting_Lib", "ComputerScience_Sorting_Lib\ComputerScience_Sorting_Lib.csproj", "{D47AE8BB-F4AE-43B3-BC2C-F6E37F802440}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LinkedLists_Core", "LinkedLists_Core\LinkedLists_Core.csproj", "{62661CFE-33D8-4512-BE5D-482F3118C408}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{D47AE8BB-F4AE-43B3-BC2C-F6E37F802440}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D47AE8BB-F4AE-43B3-BC2C-F6E37F802440}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D47AE8BB-F4AE-43B3-BC2C-F6E37F802440}.Release|Any CPU.Build.0 = Release|Any CPU
+		{62661CFE-33D8-4512-BE5D-482F3118C408}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{62661CFE-33D8-4512-BE5D-482F3118C408}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{62661CFE-33D8-4512-BE5D-482F3118C408}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{62661CFE-33D8-4512-BE5D-482F3118C408}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
