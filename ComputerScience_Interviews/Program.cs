@@ -76,9 +76,36 @@ namespace ComputerScience_Sorting
 
         }
 
+        private static Tuple<List<int>, string> UserDefinedListOfIntegers()
+        {
+            List<string> list_inputLines = new List<string>();
+            bool boolContinue = false;
+            var listOfNums = new List<int>();
+            string strListOfNums = "";
 
+            Console.WriteLine("__");
+            Console.WriteLine("__Please enter a list of integers, separated by spaces only:");
+            Console.WriteLine("__");
+            list_inputLines.Add(Console.ReadLine().Trim());
 
+            do
+            {
+                Console.WriteLine("__");
+                Console.WriteLine("__Do you want to continue adding integers? (Y/N):");
+                boolContinue = (Console.ReadLine().ToUpper().StartsWith("Y"));
+                Console.WriteLine("__Please continue with your list:");
+                Console.WriteLine("__");
+                list_inputLines.Add(Console.ReadLine().Trim());
 
+            } while (boolContinue);
+
+            //
+            //Processing.....
+            //
+
+            return Tuple.Create(listOfNums, strListOfNums);
+
+        }
 
     }
-}
+    }
