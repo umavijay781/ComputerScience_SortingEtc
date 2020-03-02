@@ -7,7 +7,7 @@ using System.Text;
 //
 namespace LinkedLists_Core
 {
-    class LinkedValue
+    public class LinkedValue
     {
         //
         //Added 3/2/2020 thomas downes
@@ -46,6 +46,62 @@ namespace LinkedLists_Core
             }
 
         }
+
+        public bool Contains_ThisOrNext(int par_intSearchingFor)
+        {
+            //
+            //Added 3/2/2020  thomas downes  
+            //
+            bool boolFound;
+            boolFound = (par_intSearchingFor == this.Value);
+
+            if (NextValue != null && (boolFound == false))
+            {
+                //bool boolFound;
+                //boolFound = (par_intSearchingFor == NextValue.Value);
+                boolFound = NextValue.Contains_ThisOrNext(par_intSearchingFor);
+            }
+
+            return boolFound; 
+
+        }
+
+        public int GetValue_ByIndex(int par_index)
+        {
+            //
+            //Added 3/2/2020 thomas downes
+            //
+            if (par_index == 0)
+            {
+                return this.Value;
+            }
+            else if (NextValue != null)
+            {
+                par_index--;
+                return NextValue.GetValue_ByIndex(par_index);
+            }
+            throw new InvalidOperationException("Indexing error!!");
+        }
+
+        public void SetValue_ByIndex(int par_index, int par_value)
+        {
+            //
+            //Added 3/2/2020 thomas downes
+            //
+            if (par_index == 0)
+            {
+                this.Value = par_value;
+            }
+            else if (NextValue != null)
+            {
+                par_index--;
+                this.NextValue.SetValue_ByIndex(par_index, par_value);
+            }
+        }
+
+
+
+
 
     }
 }
