@@ -2,7 +2,7 @@
 
 namespace ComputerScience_Sorting_Lib
 {
-    public class SortingByBubbleSort : ISortingByTypeOfSort
+    public class SortingByBubbleSort : ParentAbstractClass // : ISortingByTypeOfSort
     {
         public void TestSorting_TimesToComplete()
         {
@@ -13,28 +13,31 @@ namespace ComputerScience_Sorting_Lib
             Double ms_ForArrayLengthN_50 = 0;
             Double ms_ForArrayLengthN_100 = 0;
 
-            ms_ForArrayLengthN_20 = Sort_ReturnMilliseconds(new int[] 
-                    { 23, 13, 45, 63, 23, 45, 32, 2, 67, 12, 
-                        91, 2, 67, 24 , 50, 45, 12, 78, 34, 43 } );
+            //ms_ForArrayLengthN_20 = Sort_ReturnMilliseconds(new int[] 
+            //        { 23, 13, 45, 63, 23, 45, 32, 2, 67, 12, 
+            //            91, 2, 67, 24 , 50, 45, 12, 78, 34, 43 } );
+            ms_ForArrayLengthN_20 = Sort_ReturnMilliseconds(this.DataSetToTest(Enum_DataSetSize.N_is20));
 
-            ms_ForArrayLengthN_50 = Sort_ReturnMilliseconds(new int[]
-                    { 23, 13, 45, 63, 23, 45, 32, 2, 67, 12,
-                        91, 2, 67, 24 , 50, 45, 12, 78, 34, 43,
-                          65, 23, 45, 12, 89, 48, 81, 3, 67, 77,
-                        81, 12, 57, 34 , 40, 55, 12, 88, 24, 53,
-                          65, 23, 45, 12, 89, 48, 81, 3, 67, 77  });
+            //ms_ForArrayLengthN_50 = Sort_ReturnMilliseconds(new int[]
+            //        { 23, 13, 45, 63, 23, 45, 32, 2, 67, 12,
+            //            91, 2, 67, 24 , 50, 45, 12, 78, 34, 43,
+            //              65, 23, 45, 12, 89, 48, 81, 3, 67, 77,
+            //            81, 12, 57, 34 , 40, 55, 12, 88, 24, 53,
+            //              65, 23, 45, 12, 89, 48, 81, 3, 67, 77  });
+            ms_ForArrayLengthN_50 = Sort_ReturnMilliseconds(this.DataSetToTest(Enum_DataSetSize.N_is50));
 
-            ms_ForArrayLengthN_100 = Sort_ReturnMilliseconds(new int[]
-                    { 23, 13, 45, 63, 23, 45, 32, 2, 67, 12,
-                        91, 2, 67, 24 , 50, 45, 12, 78, 34, 43,
-                          65, 23, 45, 12, 89, 48, 81, 3, 67, 77,
-                        81, 12, 57, 34 , 40, 55, 12, 88, 24, 53,
-                          65, 23, 45, 12, 89, 48, 81, 3, 67, 77,
-                      23, 13, 45, 63, 23, 45, 32, 2, 67, 12,
-                        91, 2, 67, 24 , 50, 45, 12, 78, 34, 43,
-                          65, 23, 45, 12, 89, 48, 81, 3, 67, 77,
-                        81, 12, 57, 34 , 40, 55, 12, 88, 24, 53,
-                          65, 23, 45, 12, 89, 48, 81, 3, 67, 77  });
+            //ms_ForArrayLengthN_100 = Sort_ReturnMilliseconds(new int[]
+            //        { 23, 13, 45, 63, 23, 45, 32, 2, 67, 12,
+            //            91, 2, 67, 24 , 50, 45, 12, 78, 34, 43,
+            //              65, 23, 45, 12, 89, 48, 81, 3, 67, 77,
+            //            81, 12, 57, 34 , 40, 55, 12, 88, 24, 53,
+            //              65, 23, 45, 12, 89, 48, 81, 3, 67, 77,
+            //          23, 13, 45, 63, 23, 45, 32, 2, 67, 12,
+            //            91, 2, 67, 24 , 50, 45, 12, 78, 34, 43,
+            //              65, 23, 45, 12, 89, 48, 81, 3, 67, 77,
+            //            81, 12, 57, 34 , 40, 55, 12, 88, 24, 53,
+            //              65, 23, 45, 12, 89, 48, 81, 3, 67, 77  });
+            ms_ForArrayLengthN_100 = Sort_ReturnMilliseconds(this.DataSetToTest(Enum_DataSetSize.N_is100));
 
 
 
