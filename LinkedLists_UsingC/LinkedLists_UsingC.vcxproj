@@ -20,9 +20,9 @@
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
-    <ProjectGuid>{E76EF8A9-0CD0-439F-9FBA-4E35853AFD38}</ProjectGuid>
+    <ProjectGuid>{036F95C0-F2A9-4175-A0FD-EA921B17BF4A}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
-    <RootNamespace>HashTablesUsingC</RootNamespace>
+    <RootNamespace>LinkedListsUsingC</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
@@ -147,7 +147,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="HashTables_UsingC.cpp" />
+    <ClCompile Include="LinkedLists_UsingC.cpp" />
     <ClCompile Include="LinkedValue.cpp" />
   </ItemGroup>
   <ItemGroup>

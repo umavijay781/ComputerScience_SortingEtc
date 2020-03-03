@@ -7,13 +7,15 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ComputerScience_Sorting_App
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ComputerScience_Sorting_Lib", "ComputerScience_Sorting_Lib\ComputerScience_Sorting_Lib.csproj", "{D47AE8BB-F4AE-43B3-BC2C-F6E37F802440}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LinkedLists_Core", "LinkedLists_Core\LinkedLists_Core.csproj", "{62661CFE-33D8-4512-BE5D-482F3118C408}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LinkedLists_Core", "LinkedLists_Core\LinkedLists_Core.csproj", "{62661CFE-33D8-4512-BE5D-482F3118C408}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HashTable_Core", "HashTable_Core\HashTable_Core.csproj", "{C851F5CD-8762-446A-BB8C-4D0D6789193B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HashTable_Core", "HashTable_Core\HashTable_Core.csproj", "{C851F5CD-8762-446A-BB8C-4D0D6789193B}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "HashTables_UsingC", "HashTables_UsingC\HashTables_UsingC.vcxproj", "{E76EF8A9-0CD0-439F-9FBA-4E35853AFD38}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Pointers_UsingCPP", "Pointers_UsingCPP\Pointers_UsingCPP.vcxproj", "{FE3B87DF-8E90-4ED5-A879-3BB747D70DBA}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "LinkedLists_UsingC", "LinkedLists_UsingC\LinkedLists_UsingC.vcxproj", "{036F95C0-F2A9-4175-A0FD-EA921B17BF4A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -93,6 +95,16 @@ Global
 		{FE3B87DF-8E90-4ED5-A879-3BB747D70DBA}.Release|x64.Build.0 = Release|x64
 		{FE3B87DF-8E90-4ED5-A879-3BB747D70DBA}.Release|x86.ActiveCfg = Release|Win32
 		{FE3B87DF-8E90-4ED5-A879-3BB747D70DBA}.Release|x86.Build.0 = Release|Win32
+		{036F95C0-F2A9-4175-A0FD-EA921B17BF4A}.Debug|Any CPU.ActiveCfg = Debug|Win32
+		{036F95C0-F2A9-4175-A0FD-EA921B17BF4A}.Debug|x64.ActiveCfg = Debug|x64
+		{036F95C0-F2A9-4175-A0FD-EA921B17BF4A}.Debug|x64.Build.0 = Debug|x64
+		{036F95C0-F2A9-4175-A0FD-EA921B17BF4A}.Debug|x86.ActiveCfg = Debug|Win32
+		{036F95C0-F2A9-4175-A0FD-EA921B17BF4A}.Debug|x86.Build.0 = Debug|Win32
+		{036F95C0-F2A9-4175-A0FD-EA921B17BF4A}.Release|Any CPU.ActiveCfg = Release|Win32
+		{036F95C0-F2A9-4175-A0FD-EA921B17BF4A}.Release|x64.ActiveCfg = Release|x64
+		{036F95C0-F2A9-4175-A0FD-EA921B17BF4A}.Release|x64.Build.0 = Release|x64
+		{036F95C0-F2A9-4175-A0FD-EA921B17BF4A}.Release|x86.ActiveCfg = Release|Win32
+		{036F95C0-F2A9-4175-A0FD-EA921B17BF4A}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
