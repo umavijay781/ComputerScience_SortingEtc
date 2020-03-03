@@ -31,10 +31,17 @@ void LinkedValue::AddNextValue(int par_x1)
 		else
 		{
 			_pointer = nullptr;   //Reintialize.  
-			//LinkedValue oLV = LinkedValue(par_x1);
-			//_pointer = &oLV;
+
+			//vvvvThis sucksvvvv
+			//----This sucks----LinkedValue oLV = LinkedValue(par_x1);  
+			//----This sucks----_pointer = &oLV;   //This sucky code causes crappy object initialization. ---3/3/2020 td
+			//^^^^This sucks^^^^
+
+			// Tested, works well (no problems)!!   ---3/3/2020 thomas d. 
 			LinkedValue* oLV = new LinkedValue(par_x1);
-			_pointer = oLV; 
+			// Tested, works well (no problems)!!   ---3/3/2020 thomas d. 
+			_pointer = oLV;
+			// ^^^^ Tested, works well (no problems)!!   ---3/3/2020 thomas d. 
 		}
 	}
 	catch (...)    // (char* e)
