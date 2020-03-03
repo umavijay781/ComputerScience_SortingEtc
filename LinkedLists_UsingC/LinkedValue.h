@@ -7,10 +7,11 @@ class LinkedValue
 private:
 	//   https://www.geeksforgeeks.org/can-a-c-class-have-an-object-of-self-type/
 	//   https://stackoverflow.com/questions/2706129/can-a-c-class-include-itself-as-an-member
-	LinkedValue* _pointer = nullptr;
+	//LinkedValue* _pointer = nullptr;
 
 public:
 	int _value = 0;
+	LinkedValue* _pointer = nullptr;
 
 	// Parameterized Constructor 
 	LinkedValue(int par_x1);

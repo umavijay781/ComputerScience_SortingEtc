@@ -13,10 +13,18 @@ int main()
     oLV.AddNextValue(72);
     oLV.AddNextValue(84);
 
+    //
+    // Output time!!
+    //
     std::cout << oLV.GetValue_ByIndex(0);
+    std::cout << "   \n   ";
     std::cout << oLV.GetValue_ByIndex(1);
+    std::cout << "   \n   ";
+
     std::cout << oLV.GetValue_ByIndex(2);
+    std::cout << "   \n   ";
     std::cout << oLV.GetValue_ByIndex(3);
+    std::cout << "   \n   ";
 
     std::cout << "Is that the list you expect, 57 61 72 84 ?";
 

@@ -30,11 +30,14 @@ void LinkedValue::AddNextValue(int par_x1)
 		}
 		else
 		{
-			LinkedValue oLV = LinkedValue(par_x1);
-			_pointer = &oLV;
+			_pointer = nullptr;   //Reintialize.  
+			//LinkedValue oLV = LinkedValue(par_x1);
+			//_pointer = &oLV;
+			LinkedValue* oLV = new LinkedValue(par_x1);
+			_pointer = oLV; 
 		}
 	}
-	catch (char* e)
+	catch (...)    // (char* e)
 	{
 		//printf("Exception Caught: %s\n", e);
 		//std::cout << "Exception caught";
@@ -64,6 +67,7 @@ int LinkedValue::GetValue_ByIndex(int par_x1)
 	//	par_x1--;
 	//	return _pointer->GetValue_ByIndex(par_x1);
 	//}
+	int intValue = 0;  //Added 3/3/2020 thomas downes
 
 	if (_pointer)   // https://stackoverflow.com/questions/11279715/nullptr-and-checking-if-a-pointer-points-to-a-valid-object
 	{
@@ -74,8 +78,14 @@ int LinkedValue::GetValue_ByIndex(int par_x1)
 		else
 		{
 			par_x1--;
-			return _pointer->GetValue_ByIndex(par_x1);
+			//return _pointer->GetValue_ByIndex(par_x1);
+			intValue = (_pointer->GetValue_ByIndex(par_x1));
+			return intValue; 
 		}
+	}
+	else if (par_x1 == 0)
+	{
+		return _value;
 	}
 	else
 	{
