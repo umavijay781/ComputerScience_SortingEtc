@@ -86,21 +86,49 @@ namespace ComputerScience_Sorting_Lib
             //Looping !!   Added 3/3/2020 thomas downes
             //
             int intIndexOutput = 0;
+            int intIndexInputArr1 = 0;
+            int intIndexInputArr2 = 0;
             int intValueGreater;
-            int intValueLesser; 
+            int intValueLesser;
+            bool bKeepLooping = true; //Added 3/3/2020 thomas downes
 
-            for (int intIndexInput = 0; intIndexInput < (-1 + intLengthCommon); intIndexInput++)
+            //for (int intIndexInput = 0; intIndexInput < (-1 + intLengthCommon); intIndexInput++)
+            //{
+            //    intValueGreater = (param_array1[intIndexInput] > param_array2[intIndexInput] ? param_array1[intIndexInput] : param_array2[intIndexInput]);
+            //    intValueLesser = (param_array1[intIndexInput] < param_array2[intIndexInput] ? param_array1[intIndexInput] : param_array2[intIndexInput]);
+
+            //    array_out_merged[intIndexOutput] = intValueLesser;
+            //    Sort_AdjacentPair(array_out_merged, intIndexOutput);
+            //    intIndexOutput++;
+            //    array_out_merged[intIndexOutput] = intValueGreater;
+            //    Sort_AdjacentPair(array_out_merged, intIndexOutput);
+            //    intIndexOutput++;
+            //}
+
+            do
             {
-                intValueGreater = (param_array1[intIndexInput] > param_array2[intIndexInput] ? param_array1[intIndexInput] : param_array2[intIndexInput]);
-                intValueLesser = (param_array1[intIndexInput] < param_array2[intIndexInput] ? param_array1[intIndexInput] : param_array2[intIndexInput]);
+                if ((intIndexInputArr1 <= -1 + param_array1.Length) && (param_array1[intIndexInputArr1] < param_array2[intIndexInputArr2]))
+                {
+                    intValueLesser = param_array1[intIndexInputArr1];
+                    intIndexInputArr1++;
+                }
+                else if (intIndexInputArr2 <= -1 + param_array2.Length)
+                {
+                    intValueLesser = param_array2[intIndexInputArr2];
+                    intIndexInputArr2++;
+                }
+                else
+                {
+                    intValueLesser = -99;
+                }
 
                 array_out_merged[intIndexOutput] = intValueLesser;
-                Sort_AdjacentPair(array_out_merged, intIndexOutput);
                 intIndexOutput++;
-                array_out_merged[intIndexOutput] = intValueGreater;
-                Sort_AdjacentPair(array_out_merged, intIndexOutput);
-                intIndexOutput++;
-            }
+                bKeepLooping = (intIndexInputArr1 <= -1 + param_array1.Length) ||
+                               (intIndexInputArr2 <= (-1 + param_array2.Length));
+
+            } while (bKeepLooping); 
+
 
             if (bArray1_IsLonger && intLengthDifference == 1)
             {
