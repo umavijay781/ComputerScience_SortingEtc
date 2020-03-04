@@ -5,7 +5,7 @@ using System.Linq;  // Added 3/3/2020 thomas downes
 
 namespace ComputerScience_Sorting_Lib
 {
-    class SortingByMergeSort : ParentAbstractClass
+    public class SortingByMergeSort : ParentAbstractClass
     {
 
         //private Dictionary<int, int[]> mod_arraysByLength = new Dictionary<int, int[]> ();
@@ -13,6 +13,15 @@ namespace ComputerScience_Sorting_Lib
         //----00--private Lookup<int, int[]> mod_arraysByLength; // = new Lookup<int, int[]>();
 
         public override double Sort_ReturnMilliseconds(int[] param_array)
+        {
+            //
+            // Added 3/1/2020 thomas downes 
+            //
+            return Sort_ReturnMilliseconds(param_array, true, false);
+
+        }
+
+        public override double Sort_ReturnMilliseconds(int[] param_array, bool pbPleaseSortInput, bool pbPleaseDontSortInput)
         {
             //
             // Added 3/1/2020 thomas downes 
@@ -72,8 +81,33 @@ namespace ComputerScience_Sorting_Lib
             //return param_array;
 
             int intCountOfRemainingArrays = mod_list_splitArrays.Count;
+            int[] array_sortingCompleted = mod_list_splitArrays.FirstOrDefault();
 
-            if (1 != intCountOfRemainingArrays) throw new Exception("We are supposed to have only one left.");
+            if (1 != intCountOfRemainingArrays)
+            {
+                //Added 3/3/2020 thomas d.
+                throw new Exception("We are supposed to have only one array left, completely sorted.");
+            }
+
+            bool bSameLengthAsInput = (array_sortingCompleted.Length == param_array.Length);
+
+            if (false == bSameLengthAsInput)
+            {
+                //Added 3/4/2020 thomas d.
+                throw new Exception(String.Format("Our sorted array is the wrong length, {0} versus {1}, oops!!", 
+                    array_sortingCompleted.Length, param_array.Length));
+            }
+
+            //
+            //Copy the sorted items back to the original input array. 
+            //
+            if (pbPleaseSortInput)
+            {
+                for (int intIndex = 0; intIndex < param_array.Length; intIndex++)
+                {
+                    param_array[intIndex] = array_sortingCompleted[intIndex];
+                }
+            }
 
             timeFinish = DateTime.Now;
             double millisecondsTime = (timeFinish - timeStart).TotalMilliseconds;

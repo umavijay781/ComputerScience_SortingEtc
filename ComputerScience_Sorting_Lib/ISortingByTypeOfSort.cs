@@ -16,6 +16,7 @@ namespace ComputerScience_Sorting_Lib
 
         //double Sort_ReturnMilliseconds(ref int[] param_array);
         double Sort_ReturnMilliseconds(int[] param_array);
+        double Sort_ReturnMilliseconds(int[] param_array, bool par_PleaseSortInputArray, bool par_PleaseDontModifyInput);
 
     }
 }

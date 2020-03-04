@@ -5,4 +5,8 @@
     <TargetFramework>netcoreapp3.1</TargetFramework>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\ComputerScience_Sorting_Lib\ComputerScience_Sorting_Lib.csproj" />
+  </ItemGroup>
+
 </Project>

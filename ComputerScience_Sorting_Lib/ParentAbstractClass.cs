@@ -35,6 +35,15 @@ namespace ComputerScience_Sorting_Lib
         public abstract double Sort_ReturnMilliseconds(int[] param_array);
 
         /// <summary>
+        /// Abstract method. 
+        /// </summary>
+        /// <param name="param_array"></param>
+        /// <returns></returns>
+        public abstract double Sort_ReturnMilliseconds(int[] param_array, 
+            bool pbPleaseSortInputArray,
+            bool pbPleaseDontSortInput);
+
+        /// <summary>
         /// Virtual (overridable) method.  
         /// </summary>
         /// <param name="par_milliseconds1"></param>
@@ -48,7 +57,7 @@ namespace ComputerScience_Sorting_Lib
             // Added 3/3/2020 thomas downes  
             //
 
-            return false;  
+            return false;
 
         }
 
@@ -72,19 +81,22 @@ namespace ComputerScience_Sorting_Lib
         {
             switch (par_size)
             {
-                case Enum_DataSetSize.N_is20 : return (new int[]
-                      { 23, 13, 45, 63, 23, 45, 32, 2, 67, 12,
-                        91, 2, 67, 24 , 50, 45, 12, 78, 34, 43 }); 
+                case Enum_DataSetSize.N_is20:
+                    return (new int[]
+{ 23, 13, 45, 63, 23, 45, 32, 2, 67, 12,
+                        91, 2, 67, 24 , 50, 45, 12, 78, 34, 43 });
 
-                case Enum_DataSetSize.N_is50: return (new int[]
-                        { 23, 13, 45, 63, 23, 45, 32, 2, 67, 12,
+                case Enum_DataSetSize.N_is50:
+                    return (new int[]
+{ 23, 13, 45, 63, 23, 45, 32, 2, 67, 12,
                         91, 2, 67, 24 , 50, 45, 12, 78, 34, 43,
                           65, 23, 45, 12, 89, 48, 81, 3, 67, 77,
                         81, 12, 57, 34 , 40, 55, 12, 88, 24, 53,
                           65, 23, 45, 12, 89, 48, 81, 3, 67, 77  });
 
-                case Enum_DataSetSize.N_is100: return (new int[]
-                        { 23, 13, 45, 63, 23, 45, 32, 2, 67, 12,
+                case Enum_DataSetSize.N_is100:
+                    return (new int[]
+{ 23, 13, 45, 63, 23, 45, 32, 2, 67, 12,
                         91, 2, 67, 24 , 50, 45, 12, 78, 34, 43,
                           65, 23, 45, 12, 89, 48, 81, 3, 67, 77,
                         81, 12, 57, 34 , 40, 55, 12, 88, 24, 53,
@@ -95,13 +107,31 @@ namespace ComputerScience_Sorting_Lib
                         81, 12, 57, 34 , 40, 55, 12, 88, 24, 53,
                           65, 23, 45, 12, 89, 48, 81, 3, 67, 77  });
 
-                default : return null; 
+                default: return null;
             }
 
         }
 
 
+        public virtual Tuple<List<int>, string> DataSetToTest_Tuple(Enum_DataSetSize par_enumSize)
+        {
+            //
+            //Added 3/4/2020 thomas downes
+            //
+            System.Text.StringBuilder sbAllNumbers = new StringBuilder(300);
+            List<int> obj_listNums = new List<int>();
 
+            foreach (int intEachValue in DataSetToTest(par_enumSize))
+            {
+                obj_listNums.Add(intEachValue);
+
+                sbAllNumbers.Append("  " + intEachValue.ToString());
+
+            }
+
+            return Tuple.Create(obj_listNums, sbAllNumbers.ToString());
+
+        }
 
 
 

@@ -44,7 +44,19 @@ namespace ComputerScience_Sorting_Lib
 
         }
 
-        public double Sort_ReturnMilliseconds(int[] param_array)
+
+        public override double Sort_ReturnMilliseconds(int[] param_array)
+        {
+            //
+            // Added 3/1/2020 thomas downes 
+            //
+            //    https://sorting.at   
+            //
+            return Sort_ReturnMilliseconds(param_array, true, false);
+
+        }
+
+        public override double Sort_ReturnMilliseconds(int[] param_array, bool pbPleaseSortInput, bool pbDontSortInput)
         {
             //
             // Added 3/1/2020 thomas downes 
@@ -57,21 +69,35 @@ namespace ComputerScience_Sorting_Lib
             DateTime timeFinish = DateTime.MaxValue; 
             int intCountInversions = -1;
             bool bOutOfOrder = false;
-            int intTemp = 0; 
+            int intTemp = 0;
+
+            //
+            // Will we work with a copy, or the original input array?  
+            //
+            int[] array_working;
+            if (pbPleaseSortInput || (false == pbDontSortInput))
+            {
+                array_working = param_array;
+            }
+            else //----if (true || pbPleaseDontModifyInput)
+            {
+                array_working = new int[param_array.Length];
+                param_array.CopyTo(array_working, 0);
+            }
 
             do
             {
                 intCountInversions = 0; //Reinitialize. 
 
-                 for (int indexItem = 0; indexItem < -1 + param_array.Length; indexItem++)
+                 for (int indexItem = 0; indexItem < -1 + array_working.Length; indexItem++)
                 {
-                    bOutOfOrder = (param_array[indexItem] > param_array[indexItem + 1]);
+                    bOutOfOrder = (array_working[indexItem] > array_working[indexItem + 1]);
                     if (bOutOfOrder)
                     {
                         intCountInversions++;
-                        intTemp = param_array[indexItem];
-                        param_array[indexItem] = param_array[indexItem + 1];
-                        param_array[indexItem + 1] = intTemp;
+                        intTemp = array_working[indexItem];
+                        array_working[indexItem] = array_working[indexItem + 1];
+                        array_working[indexItem + 1] = intTemp;
                     }
                 }
 
