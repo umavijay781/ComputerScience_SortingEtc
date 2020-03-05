@@ -5,7 +5,7 @@ using System.Linq;  // Added 3/3/2020 thomas downes
 
 namespace ComputerScience_Sorting_Lib
 {
-    public class SortingByMergeSort : ParentAbstractClass
+    public class SortingByMergeSort1 : ParentAbstractClass
     {
 
         //private Dictionary<int, int[]> mod_arraysByLength = new Dictionary<int, int[]> ();
