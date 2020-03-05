@@ -65,9 +65,12 @@ namespace ComputerScience_Sorting_Lib
             for (int intSize = 2; intSize < intLength_param_array; intSize++)
             {
                 //
-                //
+                //Merging work !!
                 //
                 //mod_arraysByLength.Append<Tuple<int, int[]>>(Tuple.Create(5, new int[] { 45, 67 }));
+
+                //Added 3/4/2020 td 
+                Test_ListTheArraySizes(mod_list_splitArrays, true);
 
                 Merge_AllArrays_BySize( mod_list_splitArrays, intSize, c_bCollectMergedArrays);
 
@@ -196,17 +199,27 @@ namespace ComputerScience_Sorting_Lib
             // Added 3/3/2020 thomas d.
             //
             //if (param_array.Length == 1)
-            if (param_array.Length <= 2)
+            if (param_array.Length == 0)
+            {
+                //Added 3/4/2020 thomas downes
+                throw new InvalidOperationException("Input array is empty......!!"); 
+            }
+            else if (param_array.Length <= 2) // (param_array.Length <= 2)
             {
                 //pref_noOperation = true;
                 //return null;
-                Sort_AdjacentPair(param_array, 1);
+                //-----Sort_AdjacentPair(param_array, 1);
+                if (param_array.Length == 2)
+                {
+                    Sort_AdjacentPair(param_array, 1);
+                }
                 //mod_arraysByLength.Add(param_array.Length, param_array);
                 mod_list_splitArrays.Add(param_array);
                 return false;
             }
 
-            int[] array1of2 = new int[param_array.Length % 2];
+            //int[] array1of2 = new int[param_array.Length % 2];
+            int[] array1of2 = new int[param_array.Length / 2];
             int[] array2of2 = new int[param_array.Length - (param_array.Length / 2)];
 
             //param_array.CopyTo(array1of2, 0);
@@ -321,15 +334,29 @@ namespace ComputerScience_Sorting_Lib
 
             do
             {
-                if ((intIndexInputArr1 <= -1 + param_array1.Length) && (param_array1[intIndexInputArr1] < param_array2[intIndexInputArr2]))
+                //bool bExhaustedArray1 = (intIndexInputArr1 > -1 + param_array1.Length);
+                //bool bExhaustedArray2 = (intIndexInputArr2 > -1 + param_array2.Length);
+                bool bWithinArray1 = (intIndexInputArr1 <= -1 + param_array1.Length);
+                bool bWithinArray2 = (intIndexInputArr2 <= -1 + param_array2.Length);
+                bool bLesserIsArray1; 
+
+                //if ((intIndexInputArr1 <= -1 + param_array1.Length) && (param_array1[intIndexInputArr1] < param_array2[intIndexInputArr2]))
+                if (bWithinArray1 && bWithinArray2)
+                {
+                    bLesserIsArray1 = (param_array1[intIndexInputArr1] < param_array2[intIndexInputArr2]);
+                    intValueLesser = (bLesserIsArray1 ? param_array1[intIndexInputArr1] : param_array1[intIndexInputArr2]);
+                    if (bLesserIsArray1) intIndexInputArr1++;  // Move the index for Array #1.
+                    if (false == bLesserIsArray1) intIndexInputArr2++; // Move the index for Array #2.
+                }
+                else if (bWithinArray1)  // (intIndexInputArr1 <= -1 + param_array1.Length)
                 {
                     intValueLesser = param_array1[intIndexInputArr1];
-                    intIndexInputArr1++;
+                    intIndexInputArr1++; // Move the index for Array #1.
                 }
-                else if (intIndexInputArr2 <= -1 + param_array2.Length)
+                else if (bWithinArray2)  // (intIndexInputArr2 <= -1 + param_array2.Length)
                 {
                     intValueLesser = param_array2[intIndexInputArr2];
-                    intIndexInputArr2++;
+                    intIndexInputArr2++; // Move the index for Array #2.
                 }
                 else
                 {
@@ -378,6 +405,31 @@ namespace ComputerScience_Sorting_Lib
             }
 
         }
+
+        private string Test_ListTheArraySizes(List<int[]> param_listOfArrays, bool par_bOutputToConsole)
+        {
+            //
+            // Added 3/4/2020 thomas downes
+            //
+            //  Output the current list of array sizes. 
+            //
+            string strListOfSizes = "";
+
+            foreach (int[] each_array in param_listOfArrays)
+            {
+                if (strListOfSizes.Length == 0) strListOfSizes = "Sizes: " + each_array.Length.ToString();
+                else strListOfSizes += ", " + each_array.Length.ToString();
+            }
+
+            if (par_bOutputToConsole) Console.WriteLine(strListOfSizes);
+            return strListOfSizes;
+
+        }
+
+
+
+
+
 
 
 

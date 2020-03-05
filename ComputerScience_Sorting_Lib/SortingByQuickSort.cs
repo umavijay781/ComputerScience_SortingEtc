@@ -7,7 +7,7 @@ namespace ComputerScience_Sorting_Lib
     //
     // Added 2/18/2020 Thomas Downes 
     //
-    class SortingByQuickSort : ISortingByTypeOfSort
+    class SortingByQuickSort : ParentAbstractClass  // : ISortingByTypeOfSort
     {
         public int[] Sort_ReturnArray(List<int> param1)
         {
@@ -16,7 +16,19 @@ namespace ComputerScience_Sorting_Lib
 
         }
 
-        public double Sort_ReturnMilliseconds(int[] param_array)
+        public override double Sort_ReturnMilliseconds(int[] param_array)
+        {
+            //
+            // Added 3/1/2020 thomas downes 
+            //
+            //    https://sorting.at   
+            //
+
+            return Sort_ReturnMilliseconds(param_array, true, false);
+
+        }
+
+        public override double Sort_ReturnMilliseconds(int[] param_array, bool pboolSortInput, bool pboolDontSortIt)
         {
             //
             // Added 3/1/2020 thomas downes 
