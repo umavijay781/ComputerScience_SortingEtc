@@ -17,7 +17,7 @@ namespace ComputerScience_Sorting
 
             var objSorting_BubbleSort = new ComputerScience_Sorting_Lib.SortingByBubbleSort();
             var objSorting_Selection = new ComputerScience_Sorting_Lib.SortingBySelectionSort();
-            var objSorting_MergeSort = new ComputerScience_Sorting_Lib.SortingByMergeSort1();
+            var objSorting_MergeSort = new ComputerScience_Sorting_Lib.SortingByMergeSort_TD();
 
             //Console.WriteLine("Hello World!");
             //string strListOfNumbersToSort = "";

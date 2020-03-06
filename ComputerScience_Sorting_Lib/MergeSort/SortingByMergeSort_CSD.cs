@@ -9,8 +9,10 @@ namespace ComputerScience_Sorting_Lib
     //  Let's implement page 50 (top) of __Computer Science Distilled__
     //      ----3/5/2020 thomas downes
     //
-    public class SortingByMergeSort2 : ParentAbstractClass
+    public class SortingByMergeSort_CSD : ParentAbstractClass
     {
+        //
+        //  _CSD = _Computer Science Distilled_ by Wladston Ferreira Filho, pub. Code Energy LLC
         //
         //
         //  Let's implement page 50 (top) of __Computer Science Distilled__
@@ -64,7 +66,8 @@ namespace ComputerScience_Sorting_Lib
             {
                 for (int intIndex = 0; intIndex < param_array.Length; intIndex++)
                 {
-                    param_array[intIndex] = array_sortingCompleted[intIndex];
+                    //3-6-2020 td//param_array[intIndex] = array_sortingCompleted[intIndex];
+                    param_array[intIndex] = current_array[intIndex];
                 }
             }
 
@@ -247,7 +250,8 @@ namespace ComputerScience_Sorting_Lib
                 // Array # 1 is longer. 
                 //
                 array_out_merged[intIndexOutput] = param_array1[-1 + param_array1.Length];
-                Sort_AdjacentPair(array_out_merged, intIndexOutput);
+                //Sort_AdjacentPair(array_out_merged, intIndexOutput);
+                SortingByMergeSort_TD.Sort_AdjacentPair(array_out_merged, intIndexOutput);
             }
             else if (intLengthDifference == 1)
             {
@@ -255,7 +259,8 @@ namespace ComputerScience_Sorting_Lib
                 // Array # 2 is longer. 
                 //
                 array_out_merged[intIndexOutput] = param_array2[-1 + param_array2.Length];
-                Sort_AdjacentPair(array_out_merged, intIndexOutput);
+                //Sort_AdjacentPair(array_out_merged, intIndexOutput);
+                SortingByMergeSort_TD.Sort_AdjacentPair(array_out_merged, intIndexOutput);
             }
 
             return array_out_merged;

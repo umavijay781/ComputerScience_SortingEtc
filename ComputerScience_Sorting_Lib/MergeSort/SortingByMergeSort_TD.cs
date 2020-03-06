@@ -5,8 +5,14 @@ using System.Linq;  // Added 3/3/2020 thomas downes
 
 namespace ComputerScience_Sorting_Lib
 {
-    public class SortingByMergeSort1 : ParentAbstractClass
+    public class SortingByMergeSort_TD : ParentAbstractClass
     {
+        //
+        // Suffix _TD = Thomas Downes' implementation of the illustration of 
+        //     https://www.geeksforgeeks.org/merge-sort/   (see PNG image
+        //     Merge-Sort-Tutorial, in the folder MergeSort under Solution 
+        //    Explorer).
+        //
 
         //private Dictionary<int, int[]> mod_arraysByLength = new Dictionary<int, int[]> ();
         private List<int[]> mod_list_splitArrays = new List<int[]> ();
@@ -392,8 +398,10 @@ namespace ComputerScience_Sorting_Lib
 
         }
 
-        private void Sort_AdjacentPair(int[] param_array, int param_indexOf2ndItem)
+        public static void Sort_AdjacentPair(int[] param_array, int param_indexOf2ndItem)
         {
+            //
+            //  private void Sort_AdjacentPair(int[] param_array, int param_indexOf2ndItem)
             //
             // If needed, switch the most-recently-added pair of integers (in the merged array).  
             //
