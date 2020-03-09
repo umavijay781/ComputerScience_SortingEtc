@@ -182,35 +182,96 @@ Note:   A solution which dumps all elements from all arrays into one massive hea
              * Write your code here.
              */
 
-            int intNumArraysK = arr.GetLength(0);
-            int intNumItemsN = arr.GetLength(1);
+            short shNumArraysK = (short)arr.GetLength(0);
+            short shNumItemsN = (short)arr.GetLength(1);
 
-            bool boolAscendingArrays = (arr[0][0] < arr[0][intNumItemsN];
+            bool boolAscendingArrays = false; // (arr[0][0] < arr[0][shNumItemsN]);
 
             for (int ithArray = 0; ithArray < arr.GetLength(0); ithArray++)
             {
                 //Check all of the arrays, as some arrays might have equal values 
-                //  for all array items.  
+                //  for all array items.    If one of the arrays is confirmed 
+                //  to be ascending, then (by the stated problem from Interview Kickstart) 
+                //  we are safe to conclude that they all are ascending.
+                //   -----3/9/2020 thomas downes
+                //
                 boolAscendingArrays = (boolAscendingArrays ||
-                    (arr[ithArray][0] < arr[ithArray][intNumItemsN]));
+                    (arr[ithArray][0] < arr[ithArray][shNumItemsN]));
+                if (boolAscendingArrays) break; 
             }
 
-            int[] pointerArrayIndexes = new int[intNumArraysK];
-            int[] res = new int[intNumArraysK * intNumItemsN];
+            short[] pointerArrayIndexes = new short[shNumArraysK];
+            bool[] bArrayIsExhausted = new bool[shNumArraysK];
+
+            //Output. 
+            int[] res = new int[shNumArraysK * shNumItemsN];
+
+            int intLastOutputMaxOrMin = -1; //  arr[0][0];
+            short shCurrentResIndex = 0;
+            bool bKeepLooping = true;
+
+            int intProvisionalOutput_value = -1; // arr[0][0];
+            short shProvisionalOutput_itemIndex = -1;
+            short shProvisionalOutput_arrayIndex = -1;
+            short shCurrentArray_Pointer = -1;
+            bool bSmallerThanProvisional = false;
+            bool bAllArraysHaveBeenExhausted = false; 
 
             do
             {
+                bAllArraysHaveBeenExhausted = true;  //Initialize to True. 
 
+                for (short shArrayIndexI = 0; shArrayIndexI <= -1 + shNumArraysK; shArrayIndexI++)
+                {
+                    //
+                    // Let's review what we can "pull" from Array #I.  
+                    //
+                    int intArrayCurrentValue;
+                    
+                    shCurrentArray_Pointer = pointerArrayIndexes[shArrayIndexI];
+                    bArrayIsExhausted[shArrayIndexI] = (shCurrentArray_Pointer > -1 + shNumItemsN);
+                    if (bArrayIsExhausted[shArrayIndexI]) continue;
 
+                    bAllArraysHaveBeenExhausted = false;  //The default of True is ___NOT___ the valid truth.  
+                    intArrayCurrentValue = arr[shArrayIndexI][shCurrentArray_Pointer];
 
+                    if (shArrayIndexI == 0)
+                    {
+                        intProvisionalOutput_value = intArrayCurrentValue;
+                        shProvisionalOutput_itemIndex = pointerArrayIndexes[shArrayIndexI];
+                        shProvisionalOutput_arrayIndex = shArrayIndexI;
+                    }
+                    else
+                    {
+                        bSmallerThanProvisional = (boolAscendingArrays ? (intArrayCurrentValue < intProvisionalOutput_value) :
+                                                                         (intArrayCurrentValue > intProvisionalOutput_value));
+                        if (bSmallerThanProvisional)
+                        {
+                            intProvisionalOutput_value = intArrayCurrentValue; 
+                            shProvisionalOutput_itemIndex = shCurrentArray_Pointer;
+                            shProvisionalOutput_arrayIndex = shArrayIndexI;
+                        }
 
-            }
+                    }
 
+                }
 
+                //
+                //  We have our next output value, and we know where it came from !!
+                //
+                res[shCurrentResIndex] = intProvisionalOutput_value;
+                
+                //Indicate that we have made progress in populating the output array.  
+                shCurrentResIndex++;
+                
+                //Indicate that we have pulled a value from one of the arrays. 
+                pointerArrayIndexes[shProvisionalOutput_arrayIndex]++;
 
+                //for (int intArrayIndexKL = 0; intArrayIndexKL < )
+                //bKeepLooping = 
+                bKeepLooping = (false == bAllArraysHaveBeenExhausted);
 
-
-
+            } while (bKeepLooping);
 
             return res;  
 
