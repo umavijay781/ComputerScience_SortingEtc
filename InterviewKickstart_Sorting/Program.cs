@@ -1,4 +1,5 @@
 ﻿using System;
+using static System.Console;  //Added 3/9/2020 td
 
 namespace InterviewKickstart_Sorting
 {
@@ -8,7 +9,56 @@ namespace InterviewKickstart_Sorting
         {
             Console.WriteLine("Hello World!");
 
+            //
+            // Added 3/9/2020 td
+            //
+            int[][] arraysForInput = new int[3][]
+            {
+                new int[4] {  1,  3, 5, 7 },
+                new int[4] {  0,  2, 4, 6 },
+                new int[4] { 6, 11, 22, 66 }
+            };
+
+            Array.ForEach(arraysForInput[0], Console_WriteNumber);
+            System.Console.WriteLine("  ");
+            Array.ForEach(arraysForInput[1], Console_WriteNumber);
+            System.Console.WriteLine("  ");
+            Array.ForEach(arraysForInput[2], Console_WriteNumber);
+            System.Console.WriteLine("  ");
+
+            //
+            // Added 3/9/2020 td
+            //
+            int[] array_result = 
+            InterviewKickstart_Sorting.Program.mergeArrays(arraysForInput);
+
+
+            System.Console.WriteLine("Result of merging:  ");  // + array_result.ToString());
+
+            //array_result.ToList().ForEach(i => Console.WriteLine(i.ToString()));
+            Array.ForEach(array_result, Console_WriteNumber);
+
+            //ReadLine();  //Added 3/9/2020 td; 
+            //ReadLine();
+            System.Console.WriteLine("  ");
+            System.Console.WriteLine("Thanks for playing!  ");
+            System.Console.WriteLine("  ");
+            System.Console.WriteLine("Press the Enter key to exit the program.");
+            System.Console.WriteLine("  ");
+            ReadLine();
+
         }
+
+        static void Console_WriteNumber(int par_number)
+        {
+            //
+            //Added 3/9/2010 thomas downes
+            //
+            Console.Write(par_number.ToString() + "   ");
+
+        }
+
+
 
         /*
          * 
@@ -49,29 +99,17 @@ namespace InterviewKickstart_Sorting
 
         Here, arr[i][j] denotes value at index j of ith input array, 0-based indexing. So, arr is K * N size array.
 
-
-
         Output Format:
-
-
 
         Return an integer array res, containing all elements from all individual input arrays combined.
 
-
-
         Input/Output Format For The Custom Input:
 
-
-
         Input Format:
-
-
 
         The first line of input should contain an integer K. The second line should contain an integer N, denoting size of each input array.
 
         In next K lines, ith line should contain N space separated integers, denoting content of ith array of K input arrays, where jth element in this ith line is nothing but arr[i][j], i.e. value at index j of ith array, 0-based indexing.  
-
-
 
         If K = 3, N = 4 and arr = [
 
@@ -83,19 +121,11 @@ namespace InterviewKickstart_Sorting
 
         ], then input should be:
 
-
-
         3
-
         4
-
         1 3 5 7
-
         2 4 6 8
-
         0 9 10 11
-
-
 
         Output Format:
 
@@ -117,33 +147,18 @@ namespace InterviewKickstart_Sorting
 
         ], output will be:
 
-
-
         0
-
         1
-
         2
-
         3
-
         4
-
         5
-
         6
-
         7
-
         8
-
         9
-
         10
-
         11
-
-
 
         Constraints:
 
@@ -176,15 +191,18 @@ namespace InterviewKickstart_Sorting
         static int[] mergeArrays(int[][] arr)
         {
             /*
-             *   Solution by Thomas Downes. 
+             *   Solution 3/9/2020 by Thomas Downes. 
              */
 
-            short shNumArraysK = (short)arr.GetLength(0);
-            short shNumItemsN = (short)arr.GetLength(1);
+            //short shNumArraysK = (short)arr.GetLength(0);
+            //short shNumItemsN = (short)arr.GetLength(1);
+
+            short shNumArraysK = (short)arr.Length;  // This is the correct syntax for jagged arrays. 
+            short shNumItemsN = (short)arr[0].Length;   //This is the correct syntax for jagged arrays.
 
             bool boolAscendingArrays = false; // (arr[0][0] < arr[0][shNumItemsN]);
 
-            for (int ithArray = 0; ithArray < arr.GetLength(0); ithArray++)
+            for (short shArrayIndexI = 0; shArrayIndexI < arr.GetLength(0); shArrayIndexI++)
             {
                 //Check all of the arrays, as some arrays might have equal values 
                 //  for all array items.    If one of the arrays is confirmed 
@@ -193,7 +211,7 @@ namespace InterviewKickstart_Sorting
                 //   -----3/9/2020 thomas downes
                 //
                 boolAscendingArrays = (boolAscendingArrays ||
-                    (arr[ithArray][0] < arr[ithArray][shNumItemsN]));
+                    (arr[shArrayIndexI][0] < arr[shArrayIndexI][-1 + shNumItemsN]));
                 if (boolAscendingArrays) break; 
             }
 
@@ -275,6 +293,10 @@ namespace InterviewKickstart_Sorting
 
                 }
 
+                //Moved here from below. ----3/9/2020 thomas d. 
+                bKeepLooping = (false == bAllArraysHaveBeenExhausted);
+                if (false == bKeepLooping) break; 
+
                 //
                 //  We have our next output value, and we know where it came from !!
                 //
@@ -290,7 +312,7 @@ namespace InterviewKickstart_Sorting
 
                 //for (int intArrayIndexKL = 0; intArrayIndexKL < )
                 //bKeepLooping = 
-                bKeepLooping = (false == bAllArraysHaveBeenExhausted);
+                //Moved above.  3.9.2020 td //bKeepLooping = (false == bAllArraysHaveBeenExhausted);
 
             } while (bKeepLooping);
 
