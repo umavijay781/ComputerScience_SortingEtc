@@ -200,8 +200,8 @@ Order does not matter. Other valid solution are
                 //
                 // Perform a swap !!
                 //
-                arr[intPointerLeft] = intTempForSwap_Odd;
-                arr[intPointerRight] = intTempForSwap_Even;
+                arr[intPointerLeft] = intTempForSwap_Even;
+                arr[intPointerRight] = intTempForSwap_Odd;
 
                 //
                 // Prepare for next iteration. 
