@@ -193,14 +193,26 @@ namespace InterviewKickstart_Sorting
             /*
              *   Solution 3/9/2020 by Thomas Downes. 
              */
-
+            int intCountItemsInAllArrays = 0;
+            
             //short shNumArraysK = (short)arr.GetLength(0);
             //short shNumItemsN = (short)arr.GetLength(1);
 
             short shNumArraysK = (short)arr.Length;  // This is the correct syntax for jagged arrays. 
             short shNumItemsN = (short)arr[0].Length;   //This is the correct syntax for jagged arrays.
 
-            bool boolAscendingArrays = false; // (arr[0][0] < arr[0][shNumItemsN]);
+            //
+            //Check that all of the arrays have the same length. 
+            //
+            for (short shArrayIndexI = 0; shArrayIndexI < arr.GetLength(0); shArrayIndexI++)
+            {
+                intCountItemsInAllArrays += arr[shArrayIndexI].Length; 
+            }
+
+            //Check to see if the arrays have variable length. 
+            bool bArraysAreJagged = (intCountItemsInAllArrays != (shNumArraysK * shNumItemsN));
+
+            bool boolAscendingArrays = false; // Initialize.  (arr[0][0] < arr[0][shNumItemsN]);
 
             for (short shArrayIndexI = 0; shArrayIndexI < arr.GetLength(0); shArrayIndexI++)
             {
@@ -219,7 +231,8 @@ namespace InterviewKickstart_Sorting
             bool[] bArrayIsExhausted = new bool[shNumArraysK];
 
             //Output. 
-            int[] res = new int[shNumArraysK * shNumItemsN];
+            //------int[] res = new int[shNumArraysK * shNumItemsN];
+            int[] res = new int[intCountItemsInAllArrays];
 
             //int intLastOutputMaxOrMin = -1; //  arr[0][0];
             short shCurrentResIndex = 0;
@@ -245,7 +258,9 @@ namespace InterviewKickstart_Sorting
                     int intArrayCurrentValue;
                     
                     shCurrentArray_Pointer = pointerArrayIndexes[shArrayIndexI];
-                    bArrayIsExhausted[shArrayIndexI] = (shCurrentArray_Pointer > -1 + shNumItemsN);
+                    //bArrayIsExhausted[shArrayIndexI] = (shCurrentArray_Pointer > -1 + shNumItemsN);
+                    bArrayIsExhausted[shArrayIndexI] = (shCurrentArray_Pointer > -1 + arr[shArrayIndexI].Length);
+
                     if (bArrayIsExhausted[shArrayIndexI]) continue;
 
                     bAllArraysHaveBeenExhausted = false;  //The default of True is ___NOT___ the valid truth.  
