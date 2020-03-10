@@ -8,6 +8,8 @@ namespace InterviewKickstart_Sorting
         static void Main(string[] args)
         {
             Console.WriteLine("Hello World!");
+            short shortMax = short.MaxValue;
+            shortMax++;
 
             //
             // Added 3/9/2020 td
@@ -208,6 +210,7 @@ namespace InterviewKickstart_Sorting
             }
             intSection = 15;
             int[] res = new int[intCountItemsInAllArrays];
+            int intCurrentResIndex = 0;
 
             //
             // Start the processing. 
@@ -272,7 +275,7 @@ namespace InterviewKickstart_Sorting
                 //---Moved to top.----int[] res = new int[intCountItemsInAllArrays];
 
                 //int intLastOutputMaxOrMin = -1; //  arr[0][0];
-                short shCurrentResIndex = 0;
+                //-----Moved up.---short shCurrentResIndex = 0;
                 bool bKeepLooping = true;
 
                 intSection = 26;
@@ -363,10 +366,10 @@ namespace InterviewKickstart_Sorting
                     //  We have our next output value, and we know where it came from !!
                     //
                     intSection = 65;
-                    res[shCurrentResIndex] = intProvisionalOutput_value;
+                    res[intCurrentResIndex] = intProvisionalOutput_value;
 
                     //Indicate that we have made progress in populating the output array.  
-                    shCurrentResIndex++;
+                    intCurrentResIndex++;
 
                     //Indicate that we have pulled a value from one of the arrays. 
                     //   (This is the first time I've used the ++ operator on an 
@@ -386,14 +389,18 @@ namespace InterviewKickstart_Sorting
             {
                 //Added 3/9/2020 thomas d. 
                 //throw new Exception("We don't know what happened!! " + ex_range.Message);
-                throw new Exception("We don't know what happened!!   Section " + 
-                    intSection.ToString() + " might be at fault.");
+                throw new Exception("Section " +
+                    intSection.ToString() + "   Var. intCountItemsInAllArrays = " +
+                    intCountItemsInAllArrays.ToString() + "   Var. shCurrentResIndex = " +
+                    intCurrentResIndex.ToString() + "....");
             }
 
-            return res;  
+            return res;
+
+            //int[] res = new int[intCountItemsInAllArrays];
+            //short shCurrentResIndex = 0;
 
         }
-
 
 
     }
