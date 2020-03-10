@@ -168,7 +168,7 @@ Order does not matter. Other valid solution are
                     // We might exhaust the array (if all items are odd (none are even)). 
                     if (intPointerLeft > -1 + arr.Length) return arr;
                     if (intPointerLeft >= intPointerRight) return arr;
-                    boolIsEvenSoOkay = (0 == arr[intPointerLeft] / 2);
+                    boolIsEvenSoOkay = (0 == arr[intPointerLeft] % 2);
                     boolIsOddSoMoveRight = (false == boolIsEvenSoOkay);
                 } while (false == boolIsOddSoMoveRight);
 
@@ -188,7 +188,7 @@ Order does not matter. Other valid solution are
                     // We might exhaust the array (if all items are odd (none are even)). 
                     if (intPointerRight < 0) return arr;
                     if (intPointerRight <= intPointerLeft) return arr;
-                    boolIsOddSoOkay = (0 != arr[intPointerRight] / 2);
+                    boolIsOddSoOkay = (0 != arr[intPointerRight] % 2);
                     boolIsEvenSoMoveLeft = (false == boolIsOddSoOkay);
                 } while (boolIsOddSoOkay);
 
