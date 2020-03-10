@@ -1,226 +1,140 @@
 ﻿using System;
-using static System.Console;  //Added 3/9/2020 td
+using System.Collections.Generic;
+using System.Text;
 
 namespace InterviewKickstart_Sorting
 {
-    class Program
+    class Sorting_K_arrays
     {
-        static void Main(string[] args)
-        {
-            Console.WriteLine("Hello World!");
-
-            //
-            //Encapsulated 3/9/2020 td
-            //
-            if (false) Test_SortingKArrays();
-
-            //
-            //Added 3/9/2020 td
-            //
-            Test_EvenAndOddNums(); 
-
-        }
-
-        static void Test_EvenAndOddNums()
-        {
-            //
-            //Added 3/9/2020 
-            //
-            int[] array_input = new int[] { 1, 2, 3, 4, 5, 6 };
-
-            EvenAndOddNums.solve(array_input);
-
-
-        }
-
-
-         static void Test_SortingKArrays()
-         { 
-            //
-            //Encapsulated 3/9/2020 thomas downes
-            //
-            short shortMax = short.MaxValue;
-            shortMax++;
-
-            //
-            // Added 3/9/2020 td
-            //
-            int[][] arraysForInput = new int[3][]
-            {
-                new int[6] {  1,  3, 5, 7, 12, 399  },
-                new int[4] {  0,  2, 4, 6 },
-                new int[9] { 6, 11, 22, 66, 166, 205, 400, 500, 600 }
-            };
-
-            Array.ForEach(arraysForInput[0], Console_WriteNumber);
-            System.Console.WriteLine("  ");
-            Array.ForEach(arraysForInput[1], Console_WriteNumber);
-            System.Console.WriteLine("  ");
-            Array.ForEach(arraysForInput[2], Console_WriteNumber);
-            System.Console.WriteLine("  ");
-
-            //
-            // Added 3/9/2020 td
-            //
-            int[] array_result = 
-            InterviewKickstart_Sorting.Program.mergeArrays(arraysForInput);
-
-
-            System.Console.WriteLine("Result of merging:  ");  // + array_result.ToString());
-
-            //array_result.ToList().ForEach(i => Console.WriteLine(i.ToString()));
-            Array.ForEach(array_result, Console_WriteNumber);
-
-            //ReadLine();  //Added 3/9/2020 td; 
-            //ReadLine();
-            System.Console.WriteLine("  ");
-            System.Console.WriteLine("Thanks for playing!  ");
-            System.Console.WriteLine("  ");
-            System.Console.WriteLine("Press the Enter key to exit the program.");
-            System.Console.WriteLine("  ");
-            ReadLine();
-
-        }
-
-        static void Console_WriteNumber(int par_number)
-        {
-            //
-            //Added 3/9/2010 thomas downes
-            //
-            Console.Write(par_number.ToString() + "   ");
-
-        }
-
-
 
         /*
-         * 
-         * Merge_K_sorted_arrays
-
-        Problem Statement:
-
-        This is a popular facebook problem.
-
-        Given K sorted arrays arr, of size N each, merge them into a new array res, such that res is a sorted array.
-
-
-        Assume N is very large compared to K. N may not even be known. The arrays could be just sorted streams, for instance, timestamp streams.
-
-
-
-        All arrays might be sorted in increasing manner or decreasing manner. Sort all of them in the manner they appear in input.
-
-
-
-        Note:
-
-        Repeats are allowed.
-        Negative numbers and zeros are allowed.
-        Assume all arrays are sorted in the same order. Preserve that sort order in output.
-        It is possible to find out the sort order from at least one of the arrays.
-
-
-        Input/Output Format For The Function:
-
-
-
-        Input Format:
-
-
-
-        There is only one argument: 2D Integer array arr.
-
-        Here, arr[i][j] denotes value at index j of ith input array, 0-based indexing. So, arr is K * N size array.
-
-        Output Format:
-
-        Return an integer array res, containing all elements from all individual input arrays combined.
-
-        Input/Output Format For The Custom Input:
-
-        Input Format:
-
-        The first line of input should contain an integer K. The second line should contain an integer N, denoting size of each input array.
-
-        In next K lines, ith line should contain N space separated integers, denoting content of ith array of K input arrays, where jth element in this ith line is nothing but arr[i][j], i.e. value at index j of ith array, 0-based indexing.  
-
-        If K = 3, N = 4 and arr = [
-
-        [1, 3, 5, 7],
-
-                    [2, 4, 6, 8],
-
-                    [0, 9, 10, 11]
-
-        ], then input should be:
-
-        3
-        4
-        1 3 5 7
-        2 4 6 8
-        0 9 10 11
-
-        Output Format:
-
-
-
-        There will be (N*K) lines of output, where ith line contains an integer res[i], denoting value at index i of res.
-
-        Here, res is the result array returned by solution function.
-
-
-
-        For input K = 3, N = 4 and arr = [
-
-        [1, 3, 5, 7],
-
-                    [2, 4, 6, 8],
-
-                    [0, 9, 10, 11]
-
-        ], output will be:
-
-        0
-        1
-        2
-        3
-        4
-        5
-        6
-        7
-        8
-        9
-        10
-        11
-
-        Constraints:
-
-        1 <= N <= 500
-        1 <= K <= 500
-        -10^6 <= arr[i][j] <= 10^6, for all valid i,j
-
-        Sample Test Case:
-
-        Sample Input:   K = 3, N =  4
-
-        arr[][] = { {1, 3, 5, 7},
-
-                   {2, 4, 6, 8},
-
-                   {0, 9, 10, 11}} ;
-
-        Sample Output:
-
-        [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]
-
-        Note:   A solution which dumps all elements from all arrays into one massive heap, and then extracts the elements one by one into a sorted output may pass, but is not acceptable. These issues should go away when we have a more nuanced backend.
-
-         * 
-         * 
-         * 
-        * Complete the mergeArrays function below.
         * 
-         */
+        * Merge_K_sorted_arrays
+
+       Problem Statement:
+
+       This is a popular facebook problem.
+
+       Given K sorted arrays arr, of size N each, merge them into a new array res, such that res is a sorted array.
+
+
+       Assume N is very large compared to K. N may not even be known. The arrays could be just sorted streams, for instance, timestamp streams.
+
+
+
+       All arrays might be sorted in increasing manner or decreasing manner. Sort all of them in the manner they appear in input.
+
+
+
+       Note:
+
+       Repeats are allowed.
+       Negative numbers and zeros are allowed.
+       Assume all arrays are sorted in the same order. Preserve that sort order in output.
+       It is possible to find out the sort order from at least one of the arrays.
+
+
+       Input/Output Format For The Function:
+
+
+
+       Input Format:
+
+
+
+       There is only one argument: 2D Integer array arr.
+
+       Here, arr[i][j] denotes value at index j of ith input array, 0-based indexing. So, arr is K * N size array.
+
+       Output Format:
+
+       Return an integer array res, containing all elements from all individual input arrays combined.
+
+       Input/Output Format For The Custom Input:
+
+       Input Format:
+
+       The first line of input should contain an integer K. The second line should contain an integer N, denoting size of each input array.
+
+       In next K lines, ith line should contain N space separated integers, denoting content of ith array of K input arrays, where jth element in this ith line is nothing but arr[i][j], i.e. value at index j of ith array, 0-based indexing.  
+
+       If K = 3, N = 4 and arr = [
+
+       [1, 3, 5, 7],
+
+                   [2, 4, 6, 8],
+
+                   [0, 9, 10, 11]
+
+       ], then input should be:
+
+       3
+       4
+       1 3 5 7
+       2 4 6 8
+       0 9 10 11
+
+       Output Format:
+
+
+
+       There will be (N*K) lines of output, where ith line contains an integer res[i], denoting value at index i of res.
+
+       Here, res is the result array returned by solution function.
+
+
+
+       For input K = 3, N = 4 and arr = [
+
+       [1, 3, 5, 7],
+
+                   [2, 4, 6, 8],
+
+                   [0, 9, 10, 11]
+
+       ], output will be:
+
+       0
+       1
+       2
+       3
+       4
+       5
+       6
+       7
+       8
+       9
+       10
+       11
+
+       Constraints:
+
+       1 <= N <= 500
+       1 <= K <= 500
+       -10^6 <= arr[i][j] <= 10^6, for all valid i,j
+
+       Sample Test Case:
+
+       Sample Input:   K = 3, N =  4
+
+       arr[][] = { {1, 3, 5, 7},
+
+                  {2, 4, 6, 8},
+
+                  {0, 9, 10, 11}} ;
+
+       Sample Output:
+
+       [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]
+
+       Note:   A solution which dumps all elements from all arrays into one massive heap, and then extracts the elements one by one into a sorted output may pass, but is not acceptable. These issues should go away when we have a more nuanced backend.
+
+        * 
+        * 
+        * 
+       * Complete the mergeArrays function below.
+       * 
+        */
         static int[] mergeArrays(int[][] arr)
         {
             /*
@@ -236,7 +150,7 @@ namespace InterviewKickstart_Sorting
             intSection = 10;
             for (short shArrayIndexI = 0; shArrayIndexI < arr.GetLength(0); shArrayIndexI++)
             {
-                intSection = 11; 
+                intSection = 11;
                 intCountItemsInAllArrays += arr[shArrayIndexI].Length;
             }
             intSection = 15;
@@ -253,7 +167,7 @@ namespace InterviewKickstart_Sorting
                 //short shNumArraysK = (short)arr.GetLength(0);
                 //short shNumItemsN = (short)arr.GetLength(1);
 
-                intSection = 20; 
+                intSection = 20;
                 short shNumArraysK = (short)arr.Length;  // This is the correct syntax for jagged arrays. 
                 short shNumItemsN = (short)arr[0].Length;   //This is the correct syntax for jagged arrays.
 
@@ -268,7 +182,7 @@ namespace InterviewKickstart_Sorting
                 //Check to see if the arrays have variable length. 
                 bool bArraysAreJagged = (intCountItemsInAllArrays != (shNumArraysK * shNumItemsN));
 
-                intSection = 21; 
+                intSection = 21;
                 bool boolAscendingArrays = false; // Initialize.  (arr[0][0] < arr[0][shNumItemsN]);
                 int intCurrentArrayLen = 0;  //Added 3/9/2020 td
                 int intLastValueInArray = 0; //Added 3/9/2020 td
@@ -287,7 +201,7 @@ namespace InterviewKickstart_Sorting
 
                     intSection = 23;
                     intCurrentArrayLen = arr[shArrayIndexI].Length;
-                    intLastValueInArray = arr[shArrayIndexI][-1 + intCurrentArrayLen] ;
+                    intLastValueInArray = arr[shArrayIndexI][-1 + intCurrentArrayLen];
 
                     intSection = 24;
                     boolAscendingArrays = (boolAscendingArrays ||
