@@ -102,7 +102,7 @@ def topK(arr, k):
     ## for item_in_array in arr:
     ##     heapq.heappush(my_heap.item_in_array)
 
-    my_list_to_heap = [ 0, 0, 0]
+    my_list_to_heap = [ ]  ## [ 0, 0, 0]
 
     ##
     ## To simulate a MAXHEAP in Python, you must multiply everything by -1.
@@ -164,7 +164,9 @@ def topK(arr, k):
         ##  
         ##  https://stackoverflow.com/questions/2501457/what-do-i-use-for-a-max-heap-implementation-in-python
         ##
-        array_output.append(-1 * heapq.heappop(my_list_to_heap))
+        if (0 < len(my_list_to_heap)):
+            array_output.append(-1 * heapq.heappop(my_list_to_heap))
+
     return array_output
 
 ## print("The numbers 1234 + 1234 are equal to " + AddDecDigits_AnyLengths("1234", "1234"))
@@ -172,11 +174,22 @@ def topK(arr, k):
 ## print("The numbers  500 +  500 are equal to " + AddDecDigits_AnyLengths("500", "500"))
 ## print("The numbers  999 +  1 are equal to " + AddDecDigits_AnyLengths("999", "1"))
 
-array_input = [ 1, 2, 3, 4, 5, 6, 12, 13, 14, 41, 51, 61 ]
-array_output = topK(array_input, 5)
+#array_input = [ 1, 2, 3, 4, 5, 6, 12, 13, 14, 41, 51, 61, 0, 1, 2, 61, 41, 5 ]
+array_input = [ 4, 8, 9, 6, 6, 2, 10, 2, 8, 1, 2, 9 ]
+array_output = topK(array_input, 7)
 
-for x_value in array_output:
-    print("The next number is: " + str(x_value))
+print("--------------------------- ")
+print("----    OUTPUT   ---------- ")
+
+for x_IN_value in array_input:
+    print("The next input number is: " + str(x_IN_value))
+
+
+print("--------------------------- ")
+print("----    OUTPUT   ---------- ")
+
+for x_OUT_value in array_output:
+    print("The next output number is: " + str(x_OUT_value))
 
 
 
