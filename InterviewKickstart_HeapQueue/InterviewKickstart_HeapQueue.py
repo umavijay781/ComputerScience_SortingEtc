@@ -102,7 +102,7 @@ def topK(arr, k):
     ## for item_in_array in arr:
     ##     heapq.heappush(my_heap.item_in_array)
 
-    my_empty_list = []
+    my_list_to_heap = [ 0, 0, 0]
 
     ##
     ## To simulate a MAXHEAP in Python, you must multiply everything by -1.
@@ -112,7 +112,8 @@ def topK(arr, k):
     ##  
     ##  https://stackoverflow.com/questions/2501457/what-do-i-use-for-a-max-heap-implementation-in-python
     ##
-    minimum_HEAP = heapq.heapify(my_empty_list)
+    ##  minimum_HEAP = heapq.heapify(my_empty_list)
+    heapq.heapify(my_list_to_heap)
 
     ## my_dictionary = {} 
 
@@ -150,11 +151,34 @@ def topK(arr, k):
             ## To create a MAXHEAP in Python, you must multiply everything by -1. 
             ##  https://stackoverflow.com/questions/2501457/what-do-i-use-for-a-max-heap-implementation-in-python
             item_in_array_inverse = (-1 * item_in_array)
-            heapq.heappush(minimum_HEAP, item_in_array_inverse)
+            ## heapq.heappush(minimum_HEAP, item_in_array_inverse)
+            heapq.heappush(my_list_to_heap, item_in_array_inverse)
 
     array_output = []
-    for indexOutput in range(1, k):
-        array_output.append(heapq.heappop(arr))
+    for indexOutput in range(0, k):
+        ##
+        ##   To simulate a MAXHEAP in Python, you must multiply everything by -1.
+        ##   (Of course, when you have done a "POP" to extract the value, 
+        ##   you will want to multiply by -1 (negative one) once more, to remove the 
+        ##   negative sign.)
+        ##  
+        ##  https://stackoverflow.com/questions/2501457/what-do-i-use-for-a-max-heap-implementation-in-python
+        ##
+        array_output.append(-1 * heapq.heappop(my_list_to_heap))
     return array_output
+
+## print("The numbers 1234 + 1234 are equal to " + AddDecDigits_AnyLengths("1234", "1234"))
+## print("The numbers  234 + 1234 are equal to " + AddDecDigits_AnyLengths("234", "1234"))
+## print("The numbers  500 +  500 are equal to " + AddDecDigits_AnyLengths("500", "500"))
+## print("The numbers  999 +  1 are equal to " + AddDecDigits_AnyLengths("999", "1"))
+
+array_input = [ 1, 2, 3, 4, 5, 6, 12, 13, 14, 41, 51, 61 ]
+array_output = topK(array_input, 5)
+
+for x_value in array_output:
+    print("The next number is: " + str(x_value))
+
+
+
 
 
