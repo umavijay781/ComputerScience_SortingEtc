@@ -115,14 +115,6 @@ def topK(arr, k):
     ##  minimum_HEAP = heapq.heapify(my_empty_list)
     heapq.heapify(my_list_to_heap)
 
-    ## my_dictionary = {} 
-
-    ## thisdict =	{
-    ##   "brand": "Ford",
-    ##   "model": "Mustang",
-    ##   "year": 1964
-    ## }
-
     ##
     ##
     ## To simulate a MAXHEAP in Python, you must multiply everything by -1.
@@ -134,11 +126,13 @@ def topK(arr, k):
     ##
     array_value = arr[0]
     array_value_inverse = (-1 * arr[0])
+    heapq.heappush(my_list_to_heap, array_value_inverse)
 
     # Store the first array value.  
     my_dictionary = {
         array_value: "n/a" ## This value ("n/a") is not important. 
        }
+
 
     for item_in_array in arr:
         # Don't add it to the heap if it is already there.
@@ -150,6 +144,7 @@ def topK(arr, k):
             my_dictionary[item_in_array] = "n/a" ## This value ("n/a") is not important.
             ## To create a MAXHEAP in Python, you must multiply everything by -1. 
             ##  https://stackoverflow.com/questions/2501457/what-do-i-use-for-a-max-heap-implementation-in-python
+            ##
             item_in_array_inverse = (-1 * item_in_array)
             ## heapq.heappush(minimum_HEAP, item_in_array_inverse)
             heapq.heappush(my_list_to_heap, item_in_array_inverse)
