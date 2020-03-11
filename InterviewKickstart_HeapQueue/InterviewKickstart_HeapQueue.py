@@ -133,15 +133,22 @@ def topK(arr, k):
         array_value: "n/a" ## This value ("n/a") is not important. 
        }
 
+    #
+    #  Sets are more elegant than dictonaries for this procedure. 
+    #
+    my_set = { array_value }
 
     for item_in_array in arr:
         # Don't add it to the heap if it is already there.
         boolDictionaryHasItAlready = False # Initialize Boolean.  
-        if item_in_array in my_dictionary:
+        #if item_in_array in my_dictionary:
+        if (item_in_array in my_set):
             # The dictionary has it already. 
             boolDictionaryHasItAlready = True
         else:
-            my_dictionary[item_in_array] = "n/a" ## This value ("n/a") is not important.
+            #my_dictionary[item_in_array] = "n/a" ## This value ("n/a") is not important.
+            my_set.add(item_in_array)
+            ##
             ## To create a MAXHEAP in Python, you must multiply everything by -1. 
             ##  https://stackoverflow.com/questions/2501457/what-do-i-use-for-a-max-heap-implementation-in-python
             ##
