@@ -17,7 +17,9 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Pointers_UsingCPP", "Pointe
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "LinkedLists_UsingCPP", "LinkedLists_UsingC\LinkedLists_UsingC.vcxproj", "{036F95C0-F2A9-4175-A0FD-EA921B17BF4A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InterviewKickstart_Sorting", "InterviewKickstart_Sorting\InterviewKickstart_Sorting.csproj", "{7A330D8A-6F1F-43C3-93BF-E0C9FB62F0A0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "InterviewKickstart_Sorting", "InterviewKickstart_Sorting\InterviewKickstart_Sorting.csproj", "{7A330D8A-6F1F-43C3-93BF-E0C9FB62F0A0}"
+EndProject
+Project("{888888A0-9F3D-457C-B088-3A5042F75D52}") = "InterviewKickstart_HeapQueue", "InterviewKickstart_HeapQueue\InterviewKickstart_HeapQueue.pyproj", "{FDD8205C-A317-4706-983D-B69758AD876F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -119,6 +121,12 @@ Global
 		{7A330D8A-6F1F-43C3-93BF-E0C9FB62F0A0}.Release|x64.Build.0 = Release|Any CPU
 		{7A330D8A-6F1F-43C3-93BF-E0C9FB62F0A0}.Release|x86.ActiveCfg = Release|Any CPU
 		{7A330D8A-6F1F-43C3-93BF-E0C9FB62F0A0}.Release|x86.Build.0 = Release|Any CPU
+		{FDD8205C-A317-4706-983D-B69758AD876F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FDD8205C-A317-4706-983D-B69758AD876F}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{FDD8205C-A317-4706-983D-B69758AD876F}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{FDD8205C-A317-4706-983D-B69758AD876F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FDD8205C-A317-4706-983D-B69758AD876F}.Release|x64.ActiveCfg = Release|Any CPU
+		{FDD8205C-A317-4706-983D-B69758AD876F}.Release|x86.ActiveCfg = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
