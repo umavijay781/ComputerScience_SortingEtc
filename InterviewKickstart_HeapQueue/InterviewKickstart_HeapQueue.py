@@ -174,7 +174,10 @@ array_input = [ 4, 8, 9, 6, 6, 2, 10, 2, 8, 1, 2, 9 ]
 array_output = topK(array_input, 7)
 
 print("--------------------------- ")
-print("----    OUTPUT   ---------- ")
+print("----     INPUT   ---------- ")
+print("                            ")
+print(array_input)
+print("                            ")
 
 for x_IN_value in array_input:
     print("The next input number is: " + str(x_IN_value))
@@ -182,6 +185,9 @@ for x_IN_value in array_input:
 
 print("--------------------------- ")
 print("----    OUTPUT   ---------- ")
+print("                            ")
+print(array_output)
+print("                            ")
 
 for x_OUT_value in array_output:
     print("The next output number is: " + str(x_OUT_value))
