@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic; 
 
 namespace InterviewKick_MagicTriplets
 {
@@ -7,63 +8,63 @@ namespace InterviewKick_MagicTriplets
      *
      *3 Sum
 
-Problem Statement:
+        Problem Statement:
 
-Given an integer array arr of size n, find all magic triplets in it.
+        Given an integer array arr of size n, find all magic triplets in it.
 
-Magic triplet is a group of three numbers whose sum is zero.
+        Magic triplet is a group of three numbers whose sum is zero.
 
-Note that magic triplets may or may not be made of consecutive numbers in arr.
+        Note that magic triplets may or may not be made of consecutive numbers in arr.
 
-Input Format:
+        Input Format:
 
-Function has one argument: array of integers arr.
+        Function has one argument: array of integers arr.
 
-Output Format:
+        Output Format:
 
-Function must return an array of strings. Each string (if any) in the array must represent a unique magic triplet and strictly follow this format: “1,2,-3” (no whitespace, one comma between numbers).
+        Function must return an array of strings. Each string (if any) in the array must represent a unique magic triplet and strictly follow this format: “1,2,-3” (no whitespace, one comma between numbers).
 
-Order of the strings in the array as well as order of the integers in any string is insignificant. For example, if [“1,2,-3”, “1,-1,0”] is a correct answer, then [“0,1,-1”, “1,-3,2”] is also a correct answer.
+        Order of the strings in the array as well as order of the integers in any string is insignificant. For example, if [“1,2,-3”, “1,-1,0”] is a correct answer, then [“0,1,-1”, “1,-3,2”] is also a correct answer.
 
-However any two triplets that only differ by order of the numbers are considered duplicates, and duplicates must not be returned. In other words, if triplet “1,2,-3” is a part of an answer, then none of “1,-3,2”, “-3,2,1”, etc may appear in the same answer (though any one of them may appear instead of “1,2,-3”). 
+        However any two triplets that only differ by order of the numbers are considered duplicates, and duplicates must not be returned. In other words, if triplet “1,2,-3” is a part of an answer, then none of “1,-3,2”, “-3,2,1”, etc may appear in the same answer (though any one of them may appear instead of “1,2,-3”). 
 
-Constraints:
+        Constraints:
 
-1 <= n <= 2000
--1000 <= any element of arr <= 1000
-arr may contain duplicate numbers.
-arr is not necessarily sorted.
+        1 <= n <= 2000
+        -1000 <= any element of arr <= 1000
+        arr may contain duplicate numbers.
+        arr is not necessarily sorted.
 
-Sample Input 1:
-arr = [10, 3, -4, 1, -6, 9]
+        Sample Input 1:
+        arr = [10, 3, -4, 1, -6, 9]
  
-Sample Output 1:
-[“10,-4,-6”, “3,-4,1”]
+        Sample Output 1:
+        [“10,-4,-6”, “3,-4,1”]
 
-Sample Input 2:
-arr = [12, 34, -46]
+        Sample Input 2:
+        arr = [12, 34, -46]
 
-Sample Output 2:
-[“12,-46,34”]
+        Sample Output 2:
+        [“12,-46,34”]
 
-Sample Input 3:
-arr = [0, 0, 0];
+        Sample Input 3:
+        arr = [0, 0, 0];
 
-Sample Output 3:
-[“0,0,0”]
+        Sample Output 3:
+        [“0,0,0”]
 
-Sample Input 4:
-arr = [-2, 2, 0 -2, 2];
+        Sample Input 4:
+        arr = [-2, 2, 0 -2, 2];
 
-Sample Output 4:
-[“2,-2,0”]
+        Sample Output 4:
+        [“2,-2,0”]
 
      * ****/
 
     public class MagicTriplets
     {
 
-        public static FindMagicTriplets(int[] arr)
+        public static FindMagicTriplets(int[] par_arrayOfNums)
         {
             //
             //   Find all of the triplets (sets of 3) of numbers (from the input array) that sum to 0.   
@@ -97,18 +98,123 @@ Sample Output 4:
             //      ---Create a subfunction which looks for all pairs which sum to the (negative of) any
             //           requested number.  Call that function for each & every unique 
             //           value in the array.  
+            //  ----Thomas Downes, 3/11/2020 
             //
             //
 
+            int intLargestNumber = LargestNum(par_arrayOfNums);
+            int intGreatestNegative = MostNegativeNumber(par_arrayOfNums);   //This is the 
+            //     number which is furthest to the left on the negative-postive real-number line.
+
+            //
+            // The tuple-sums must counter-balance the values of the 
+            //    individual numbers (which are candidates to complete
+            //    the Magic Triplets).  
+            //
+            int intTupleSum_BoundLower = (0 - intGreatestNegative);
+            int intTupleSum_BoundUpper = (0 - intLargestNumber);
+
+
+
+            //System.Collections.Generic.Dictionary<int, List<Tuple<int, int>>>
+
+            //
+            // Build a helpful dictionary of paired integer values.  
+            //
+            var dictionaryOfTuples = GetSummedDictionaryOfPairs(par_arrayOfNums, 
+                   intTupleSum_BoundLower, 
+                   intTupleSum_BoundUpper);
 
 
 
 
 
 
+        }
+
+        private static System.Collections.Generic.Dictionary<int, List<Tuple<int, int>>> 
+            GetSummedDictionaryOfPairs(int[] par_array, int par_boundOfSumLower, int par_boundOfSumUpper)
+        {
+            //
+            // Added 3/11/2020 thomas downes
+            //
+            var output_dictionary = new System.Collections.Generic.Dictionary<int, List<Tuple<int, int>>>();
+
+            for (int intEachSum = par_boundOfSumLower; intEachSum <= par_boundOfSumUpper; intEachSum++)
+            {
+                //
+                // Create a list of paired numbers, which sum to a specific value.
+                //
+                var each_listOfPairs = GetListOfPairsBySum(par_array, intEachSum);
+
+                output_dictionary.Add(intEachSum, each_listOfPairs);
+
+            }
+            return output_dictionary;
+
+        }
+
+        private static List<Tuple<int, int>> GetListOfPairsBySum(int[] par_array, int par_sumOfPair)
+        {
+            //
+            // Added 3/11/2020 thomas downes  
+            //
 
 
+        }
 
+
+        private static int LargestNum(int[] par_arrayOfNums)
+        {
+            //
+            //Added 3/11/20020 thomas downes 
+            //
+            int intProvisionalMax = 0;   // Literally, the initialization value is only to 
+            // satisfy the compiler &/or Visual Studio.  It won't be utilized below. 
+            bool bInitialized = false;
+
+            foreach (int intEach in par_arrayOfNums)
+            {
+                if (bInitialized)
+                {
+                    if (intEach > intProvisionalMax) intProvisionalMax = intEach;
+                }
+                else
+                {
+                    intProvisionalMax = intEach;
+                    bInitialized = true;
+                }
+            }
+            return intProvisionalMax;
+        }
+
+        private static int MostNegativeNumber(int[] par_arrayOfNums)
+        {
+            //
+            // We will use the comparison operater < to determine the smallest number,
+            //    which is probably a multi-digit negative number, 
+            //    but not necessarily.  
+            //
+            // Added 3/11/20020 thomas downes 
+            //
+            int intProvisionalMin = 0;   // Literally, the initialization value is only to 
+            // satisfy the compiler &/or Visual Studio.  It won't be utilized below. 
+            bool bInitialized = false;
+
+            foreach (int intEach in par_arrayOfNums)
+            {
+                if (bInitialized)
+                {
+                    //----if (intEach > intProvisionalMax) intProvisionalMax = intEach;
+                    if (intEach < intProvisionalMin) intProvisionalMin = intEach;
+                }
+                else
+                {
+                    intProvisionalMin = intEach;
+                    bInitialized = true;
+                }
+            }
+            return intProvisionalMin;
         }
 
 
