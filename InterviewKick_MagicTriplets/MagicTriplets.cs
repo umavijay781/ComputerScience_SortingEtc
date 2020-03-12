@@ -102,9 +102,34 @@ namespace InterviewKick_MagicTriplets
             //
             //
 
-            int intLargestNumber = LargestNum(par_arrayOfNums);
-            int intGreatestNegative = MostNegativeNumber(par_arrayOfNums);   //This is the 
-            //     number which is furthest to the left on the negative-postive real-number line.
+            //
+            //Sort the array!!
+            //
+            const bool c_bSortInputArray = true;
+            int intLargestNumber = 0;
+            int intGreatestNegative = -1;
+
+            if (c_bSortInputArray)
+            {
+                //
+                //Sort the array in place.
+                //
+                System.Array.Sort(par_arrayOfNums);
+                int intArrayItem_First = par_arrayOfNums[0];
+                int intArrayItem_Last = par_arrayOfNums[-1 + par_arrayOfNums.Length];
+                intGreatestNegative = intArrayItem_First;
+                intLargestNumber = intArrayItem_Last;
+            }
+            else
+            {
+                //
+                //We are leaving the array alone.  Do a O(n) search for the largest 
+                //     & left-most negative numbers.
+                //
+                intLargestNumber = LargestNum(par_arrayOfNums);
+                intGreatestNegative = MostNegativeNumber(par_arrayOfNums);   //This is the 
+                //     number which is furthest to the left on the negative-postive real-number line.
+            }
 
             //
             // The tuple-sums must counter-balance the values of the 
@@ -154,11 +179,40 @@ namespace InterviewKick_MagicTriplets
 
         }
 
-        private static List<Tuple<int, int>> GetListOfPairsBySum(int[] par_array, int par_sumOfPair)
+        private static List<Tuple<int, int>> 
+            GetListOfPairsBySum(int[] par_array, int par_sumOfPair)
         {
             //
             // Added 3/11/2020 thomas downes  
             //
+            //  Would the Two-Pointer Approach help? 
+            //
+            var output_list = new List<Tuple<int, int>>();
+            int intPointerForLoopOuter = -1;
+            //int intPointerForLoopInner = -1;
+            bool boolKeepLooping = true;
+            int intBalanceOfSum;
+            int intIndexOfFound = 0;
+            int intPairItemFirst = 0; ;
+            int intPairItemSecond = 0;
+
+            do
+            {
+                intPointerForLoopOuter++;
+                intPairItemFirst = par_array[intPointerForLoopOuter];
+                intBalanceOfSum = (par_sumOfPair - intPairItemFirst);
+                intIndexOfFound = Array.BinarySearch(par_array, intBalanceOfSum);
+                intPairItemSecond = par_array[intIndexOfFound];
+
+                if (0 <= intIndexOfFound) 
+                { 
+                    output_list.Add(Tuple.Create<int, int>(intPairItemFirst, intPairItemSecond));
+                } 
+
+            } while (boolKeepLooping);
+
+
+
 
 
         }
