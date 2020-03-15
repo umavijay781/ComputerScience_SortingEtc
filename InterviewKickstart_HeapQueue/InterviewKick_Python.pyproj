@@ -3,13 +3,14 @@
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>fdd8205c-a317-4706-983d-b69758ad876f</ProjectGuid>
-    <ProjectHome>.</ProjectHome>
-    <StartupFile>InterviewKickstart_HeapQueue.py</StartupFile>
+    <ProjectHome>
+    </ProjectHome>
+    <StartupFile>InterviewKickstart_TopK.py</StartupFile>
     <SearchPath>
     </SearchPath>
     <WorkingDirectory>.</WorkingDirectory>
     <OutputPath>.</OutputPath>
-    <Name>InterviewKickstart_HeapQueue</Name>
+    <Name>InterviewKick_Python</Name>
     <RootNamespace>InterviewKickstart_HeapQueue</RootNamespace>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
@@ -21,10 +22,10 @@
     <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="InterviewKickstart_HeapQueue.py" />
+    <Compile Include="InterviewKickstart_TopK.py" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Problem Statement.txt" />
+    <Content Include="Top K Problem Statement.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\Python Tools\Microsoft.PythonTools.targets" />
   <!-- Uncomment the CoreCompile target to enable the Build command in

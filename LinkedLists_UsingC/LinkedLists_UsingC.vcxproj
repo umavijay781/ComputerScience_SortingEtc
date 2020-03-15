@@ -148,10 +148,12 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="DoubleLinked.cpp" />
     <ClCompile Include="LinkedLists_UsingC.cpp" />
     <ClCompile Include="LinkedValue.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="DoubleLinked.h" />
     <ClInclude Include="LinkedValue.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
