@@ -5,7 +5,7 @@
     <ProjectGuid>fdd8205c-a317-4706-983d-b69758ad876f</ProjectGuid>
     <ProjectHome>
     </ProjectHome>
-    <StartupFile>InterviewKickstart_TopK.py</StartupFile>
+    <StartupFile>HeapSort.py</StartupFile>
     <SearchPath>
     </SearchPath>
     <WorkingDirectory>.</WorkingDirectory>
@@ -22,6 +22,9 @@
     <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="HeapSort.py">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="InterviewKickstart_TopK.py" />
   </ItemGroup>
   <ItemGroup>
