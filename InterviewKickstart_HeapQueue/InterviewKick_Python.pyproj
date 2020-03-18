@@ -22,13 +22,20 @@
     <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="ClassNQueensPS.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ClassNQueensSD.py">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="HeapSort.py">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="InterviewKickstart_TopK.py" />
+    <Compile Include="Problem_TopK.py" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Top K Problem Statement.txt" />
+    <Content Include="Problem Statement - N Queens.txt" />
+    <Content Include="Problem Statement - Top K.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\Python Tools\Microsoft.PythonTools.targets" />
   <!-- Uncomment the CoreCompile target to enable the Build command in

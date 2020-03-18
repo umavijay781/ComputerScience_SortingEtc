@@ -1,0 +1,87 @@
+
+n Queen Problem
+
+Given an integer n, find all the possible ways to position n queens on an n×n chessboard so that no two queens attack each other.
+
+A queen in chess can move horizontally, vertically, or diagonally.
+
+Do solve the problem using recursion first even if you see some non-recursive approaches.
+
+Example One
+
+Input: 4
+
+Output: There are two distinct ways four queens can be positioned on a 4×4 chessboard without attacking each other. They may appear in the output in any order so the two valid outputs are:
+
+[
+["--q-", "q---", "---q", "-q--"], 
+["-q--", "---q", "q---", "--q-"]
+]
+
+]
+
+and
+
+[ ["-q--", "---q", "q---", "--q-" ], 
+["--q-", "q---", "---q", "-q--" ]
+]
+
+
+
+Example Two
+
+Input: 2
+
+
+
+Output: [ ]
+
+No way to position two queens on a 2×2 chessboard without them attacking each other - so empty array.
+
+
+
+Notes
+
+Input Parameters: Function has one argument: n.
+
+
+
+Output: Function must return a two-dimensional array of strings representing the arrangements. Size of the array must be m×n where m is the number of distinct arrangements. Length of each string must be n and the strings’ characters may be either ‘q’ (for a queen) or ‘-’ (for empty position on the chessboard). Valid arrangements may appear in the output in any order.
+
+
+
+Constraints:
+
+1 <= n <= 12
+
+
+Custom Input
+
+Custom Input Format:
+
+First and only line of input contains integer n. For example: 4
+
+
+
+Custom Output Format: For every one of m valid arrangements (if any), output must include n+1 lines. Of those n+1 lines first n must have n character each, representing rows of the chessboard; the last, (n+1)-th, line must be empty in every one of the m arrangements.
+
+Total number of lines in the output must be m*(n+1).
+
+For input n=4 one correct output is:
+
+-q--
+
+---q
+
+q---
+
+--q-
+
+--q-
+q---
+---q
+-q--
+
+(note an empty line between the “chessboards” and another one at the end)
+
+
