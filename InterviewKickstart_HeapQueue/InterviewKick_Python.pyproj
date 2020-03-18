@@ -31,6 +31,9 @@
     <Compile Include="HeapSort.py">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="moduleNQueens.py">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="Problem_TopK.py" />
   </ItemGroup>
   <ItemGroup>
