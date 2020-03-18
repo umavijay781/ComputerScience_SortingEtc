@@ -43,8 +43,12 @@ def NQueens_Helper(Subproblem, PartialSolution):
         #
         # Recursive Call
         #
-        boolAttack = PartialSolution.AttackDetected(iColIndex)
+        boolAttack = PartialSolution.AttackDetected_NextColumn(iColIndex)
         if (False == boolAttack ):
+            # No Queen attacks are detected.  We can proceed
+            #    with the recursive call. 
+            #
+            PartialSolution.setColumnChoice_isItOkay(iColIndex)
             NQueens_Helper(Subproblem, PartialSolution)
 
 
