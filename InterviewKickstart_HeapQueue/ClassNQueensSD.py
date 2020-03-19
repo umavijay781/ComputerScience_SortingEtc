@@ -82,10 +82,18 @@ class ClassNQueensSD():
         #
         k_column_inverse = (self.N_numColumns - k_column - 1) # Subtract 1 to make the Column Inverse 0-based instead of 1-based.
         bDiagonalRL = self.DiagonalsBackslash_1Queen[i_row + k_column_inverse] # Check if this backslash diagonal \\ is now occupied. 
+        # 
+        # ||| ||| ||| ||| ||| (part 1 of 2)
+        #
         bColumnUsed = False
         for i in range(-1 + self.N_numRows):
             bColumnUsed = (bColumnUsed or (k_column == self.ColumnsSelected_EachRow[i]))
-        return (bDiagonalLR or bDiagonalRL or bColumnUsed)
+        # 
+        # ||| ||| ||| ||| ||| (part 2 of 2)
+        #
+        bAlreadyTaken_Column = self.ColumnIsUsed[k_column]
+        # return (bDiagonalLR or bDiagonalRL or bColumnUsed)
+        return (bDiagonalLR or bDiagonalRL or bColumnUsed or bAlreadyTaken_Column)
 
 
     def AttackDetected_nextColumn(self, k_column):
@@ -124,11 +132,14 @@ class ClassNQueensSD():
             return false
         else:
             self.RowIndex = i_row
+            # 
+            # ||| ||| ||| ||| |||
+            #
             bAlreadyTaken_Column = self.ColumnIsUsed[k_column]
             if (bAlreadyTaken_Column):
                #raise "This || column is already taken!!"
                Ex3 = ValueError()
-               Ex3.strerror = "This // diagonal is already taken!!"
+               Ex3.strerror = "This || column is already taken!!"
                raise Ex3
                return false
             self.ColumnsSelected_EachRow[i_row] = k_column
@@ -163,20 +174,24 @@ class ClassNQueensSD():
         # Added 3/18/2020 thomas downes
         #
         # Remove the last prior column choice.
-        #  
-        self.RowIndex += -1
+        #
+        i_row = self.RowIndex  
+        k_column = self.ColumnsSelected_EachRow[i_row]
+        # |||||||||||||||||||||
         self.ColumnsSelected_EachRow[i_row] = -1 ## Re-initialize.
         # /// /// /// /// ///
-        self.DiagonalsForward_1Queen[i_row + k_column] = false # Indicate that this forward-slash diagonal // is __not occupied. 
+        self.DiagonalsForward_1Queen[i_row + k_column] = False # Indicate that this forward-slash diagonal // is __not occupied. 
         # \\\ \\\ \\\ \\\ \\\
         k_column_inverse = (self.N_numColumns - k_column - 1) # Subtract 1 to make the Column Inverse 0-based instead of 1-based.
-        self.DiagonalsBackslash_1Queen[i_row + k_column_inverse] = false # Indicate that this backslash diagonal \\ is __not occupied. 
+        self.DiagonalsBackslash_1Queen[i_row + k_column_inverse] = False # Indicate that this backslash diagonal \\ is __not occupied. 
+        self.RowIndex += -1  # Decrement the Row Index.
         return 
 
 
     def Completed(self):
-       return (self.RowIndex >= (-1 + self.N_numRows))
-
+       # return (self.RowIndex >= (-1 + self.N_numRows))
+       # return (self.RowIndex >= 2)
+       return (self.RowIndex >= 3)
 
     def Output_Array(self):
         # Added 3/18/2020 thomas downes
@@ -193,6 +208,7 @@ class ClassNQueensSD():
         output_strings = []
         output_row = ""
         for i_row in range(self.N_numRows):
+            output_row = ""
             for k_col in range(self.N_numColumns):
                 if (self.ColumnsSelected_EachRow[i_row] == k_col):
                     output_row = (output_row + "q")
@@ -213,7 +229,7 @@ class ClassNQueensSD():
         #
         output_strings = []
         output_chessboard = ""
-        output_strings = Output_ArrayOfStrings()
+        output_strings = self.Output_ArrayOfStrings()
         for each_string in output_strings:
             output_chessboard += (each_string + "\n")
         return output_chessboard

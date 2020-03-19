@@ -8,8 +8,13 @@
 #
 objResults = List_of_ObjectOrArray()
 
+#
+# Where does the Subproblem Definition get changed, if ever?
+#
+#
 def RecursiveOverall(n_sizeProblem):
     #
+    # Where does the Subproblem Definition get changed, if ever?
     #
     #
     objResults = List_of_ObjectOrArray()
@@ -21,7 +26,7 @@ def RecursiveOverall(n_sizeProblem):
 
 def RecursiveHelper(SubproblemDef, SubproblemLevel, PartialSolution_Slate):
     #
-    #
+    # Where does the Subproblem Definition get changed, if ever?
     #
     # Backtracking Case (pruning the heuristic tree)
     #

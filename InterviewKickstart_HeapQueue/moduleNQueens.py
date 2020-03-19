@@ -29,7 +29,7 @@ def NQueens_Helper(par_Subproblem, par_PartialSolution, par_Results):
     # par_PartialSolution = ClassNQueensSD(8) 
 
     #
-    # Backtracking Case  
+    #  Backtracking Case  
     #
     # if (par_PartialSolution.AttackDetected_Columns()):
     #    return
@@ -39,26 +39,33 @@ def NQueens_Helper(par_Subproblem, par_PartialSolution, par_Results):
     #
     if (par_PartialSolution.Completed()):
         # Output the full solution.
-        par_Results.Add(par_PartialSolution.OutputArray())
+        # par_Results.append(par_PartialSolution.OutputArray())
+        par_Results.append(par_PartialSolution)
         return
 
     #
     # Recursive Case 
     #
     boolAttack = False
+    intCountColumnsOkay = 0
 
     for iColIndex in range(par_Subproblem.N_GeneralProblemSize):
         #
         # Recursive Call
         #
         boolAttack = par_PartialSolution.AttackDetected_nextColumn(iColIndex)
-        if (False == boolAttack ):
+        if (False == boolAttack):
             #
             # No Queen attacks are detected.  We can proceed
             #    with the recursive call. 
             #
-            par_PartialSolution.setColumnChoice_isItOkay(iColIndex)
-            NQueens_Helper(par_Subproblem, par_PartialSolution, par_Results)
+            # This the top piece of bread of the "Omkar's Sandwich" (Interview Kickstart)
+            boolItIsOkay = par_PartialSolution.setColumnChoice_isItOkay(iColIndex)
+            if (boolItIsOkay):
+                intCountColumnsOkay += 1
+                NQueens_Helper(par_Subproblem, par_PartialSolution, par_Results)
+                # This the bottom piece of bread of the "Omkar's Sandwich" (Interview Kickstart)
+                par_PartialSolution.removeLastColumnChoice()
     return 
 
 #
@@ -66,6 +73,12 @@ def NQueens_Helper(par_Subproblem, par_PartialSolution, par_Results):
 # Main Program 
 # 
 #
+print("                                      ")
+print("**************************************")
+print("***      The N-Queens Problem      ***")
+print("**************************************")
+print("                                      ")
+
 Results = GetSolutions_NQueens_Overall(4)
 
 for each_ClassNQueens in Results:
