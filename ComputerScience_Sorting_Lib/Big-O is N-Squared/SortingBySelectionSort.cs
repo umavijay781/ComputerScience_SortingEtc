@@ -28,8 +28,8 @@ namespace ComputerScience_Sorting_Lib
             //
             // Added 3/4/2020 thomas downes
             //
-            const bool c_boolSortInput = true;
-            return Sort_ReturnMilliseconds(param_array, c_boolSortInput, false);
+            const bool c_boolSortInput = True;
+            return Sort_ReturnMilliseconds(param_array, c_boolSortInput, False);
         }
 
         public override double Sort_ReturnMilliseconds(int[] param_array, bool pbPleaseSortInputArray, bool pbPleaseDontModifyInput)
@@ -45,7 +45,7 @@ namespace ComputerScience_Sorting_Lib
             DateTime timeFinish = DateTime.MaxValue;
             int intCountInversions = -1;
 
-            //bool bOutOfOrder = false;
+            //bool bOutOfOrder = False;
             //int intTemp = 0;
 
             intCountInversions = 0; //Reinitialize. 
@@ -54,11 +54,11 @@ namespace ComputerScience_Sorting_Lib
             // Will we work with a copy, or the original input array?  
             //
             int[] array_working;
-            if (pbPleaseSortInputArray || (false == pbPleaseDontModifyInput))
+            if (pbPleaseSortInputArray || (False == pbPleaseDontModifyInput))
             { 
                 array_working = param_array; 
             }
-            else //----if (true || pbPleaseDontModifyInput)
+            else //----if (True || pbPleaseDontModifyInput)
             {
                 array_working = new int[param_array.Length];
                 param_array.CopyTo(array_working, 0);
@@ -89,7 +89,7 @@ namespace ComputerScience_Sorting_Lib
             //    https://sorting.at   
             //
             int intCountInversions = 0;
-            //bool bOutOfOrder = false;
+            //bool bOutOfOrder = False;
             int intTemp = 0;
             int intSmallestValue = int.MaxValue; ;
             int intIndexOfSmallest = -1;

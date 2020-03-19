@@ -17,7 +17,7 @@ def GetSolutions_NQueens_Overall(N_RowsColumnsQueens):
     my_Subproblem = ClassNQueensSD(N_RowsColumnsQueens)
     my_PartialSolution = ClassNQueensSD(N_RowsColumnsQueens)
     output_Results = []
-    NQueensHelper(my_Subproblem, my_PartialSolution, output_Results)
+    NQueens_Helper(my_Subproblem, my_PartialSolution, output_Results)
     return output_Results
 
 def NQueens_Helper(par_Subproblem, par_PartialSolution, par_Results):
@@ -31,13 +31,13 @@ def NQueens_Helper(par_Subproblem, par_PartialSolution, par_Results):
     #
     # Backtracking Case  
     #
-    if (par_PartialSolution.AttackDetected()):
-        return
+    # if (par_PartialSolution.AttackDetected_Columns()):
+    #    return
 
     #
     # Base Case - Leaf Worker
     #
-    if (par_PartialSolution.Completed):
+    if (par_PartialSolution.Completed()):
         # Output the full solution.
         par_Results.Add(par_PartialSolution.OutputArray())
         return
@@ -51,7 +51,7 @@ def NQueens_Helper(par_Subproblem, par_PartialSolution, par_Results):
         #
         # Recursive Call
         #
-        boolAttack = par_PartialSolution.AttackDetected_NextColumn(iColIndex)
+        boolAttack = par_PartialSolution.AttackDetected_nextColumn(iColIndex)
         if (False == boolAttack ):
             #
             # No Queen attacks are detected.  We can proceed

@@ -28,7 +28,7 @@ namespace ComputerScience_Sorting_Lib
             //
             // Added 3/1/2020 thomas downes 
             //
-            return Sort_ReturnMilliseconds(param_array, true, false);
+            return Sort_ReturnMilliseconds(param_array, True, False);
 
         }
 
@@ -43,8 +43,8 @@ namespace ComputerScience_Sorting_Lib
 
             DateTime timeStart = DateTime.Now;
             DateTime timeFinish = DateTime.MaxValue;
-            //bool bKeepLooping = true;
-            //bool bNoSplitPossible = false;
+            //bool bKeepLooping = True;
+            //bool bNoSplitPossible = False;
             int[] current_array = param_array;
             int intLength_param_array = param_array.Length;
 
@@ -129,7 +129,7 @@ namespace ComputerScience_Sorting_Lib
             //   about the target array being big enough to contain all of the 
             //   source values.   -----3/4/2020 thomas d. 
             //
-            //bool bShortArrayIsFilled = false;
+            //bool bShortArrayIsFilled = False;
             int intIndexSource = -1;
             int intIndexTarget = -1;
 
@@ -190,7 +190,7 @@ namespace ComputerScience_Sorting_Lib
             int intIndexInputArr2 = 0;
             int intValueGreater;
             int intValueLesser;
-            bool bKeepLooping = true; //Added 3/3/2020 thomas downes
+            bool bKeepLooping = True; //Added 3/3/2020 thomas downes
 
             //for (int intIndexInput = 0; intIndexInput < (-1 + intLengthCommon); intIndexInput++)
             //{
@@ -219,7 +219,7 @@ namespace ComputerScience_Sorting_Lib
                     bLesserIsArray1 = (param_array1[intIndexInputArr1] < param_array2[intIndexInputArr2]);
                     intValueLesser = (bLesserIsArray1 ? param_array1[intIndexInputArr1] : param_array1[intIndexInputArr2]);
                     if (bLesserIsArray1) intIndexInputArr1++;  // Move the index for Array #1.
-                    if (false == bLesserIsArray1) intIndexInputArr2++; // Move the index for Array #2.
+                    if (False == bLesserIsArray1) intIndexInputArr2++; // Move the index for Array #2.
                 }
                 else if (bWithinArray1)  // (intIndexInputArr1 <= -1 + param_array1.Length)
                 {

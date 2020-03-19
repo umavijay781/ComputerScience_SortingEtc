@@ -52,7 +52,7 @@ namespace ComputerScience_Sorting_Lib
             //
             //    https://sorting.at   
             //
-            return Sort_ReturnMilliseconds(param_array, true, false);
+            return Sort_ReturnMilliseconds(param_array, True, False);
 
         }
 
@@ -68,18 +68,18 @@ namespace ComputerScience_Sorting_Lib
             DateTime timeStart = DateTime.Now;
             DateTime timeFinish = DateTime.MaxValue; 
             int intCountInversions = -1;
-            bool bOutOfOrder = false;
+            bool bOutOfOrder = False;
             int intTemp = 0;
 
             //
             // Will we work with a copy, or the original input array?  
             //
             int[] array_working;
-            if (pbPleaseSortInput || (false == pbDontSortInput))
+            if (pbPleaseSortInput || (False == pbDontSortInput))
             {
                 array_working = param_array;
             }
-            else //----if (true || pbPleaseDontModifyInput)
+            else //----if (True || pbPleaseDontModifyInput)
             {
                 array_working = new int[param_array.Length];
                 param_array.CopyTo(array_working, 0);

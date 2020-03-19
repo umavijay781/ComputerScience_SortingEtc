@@ -24,7 +24,7 @@ namespace ComputerScience_Sorting_Lib
             //    https://sorting.at   
             //
 
-            return Sort_ReturnMilliseconds(param_array, true, false);
+            return Sort_ReturnMilliseconds(param_array, True, False);
 
         }
 
@@ -76,7 +76,7 @@ namespace ComputerScience_Sorting_Lib
             param_array[intCurrentPivotIndex] = intTempValue;
 
             //intCurrentPivotIndex = 0;
-            bool bKeepLooping = true;
+            bool bKeepLooping = True;
 
             //
             //  Let's begin Hoare's Partioning.   
@@ -90,8 +90,8 @@ namespace ComputerScience_Sorting_Lib
 
             int intPointerIndex_I = 1;
             int intPointerIndex_K = -1 + param_array.Length;
-            bool bNeedToThrow_LeftToRight = false;
-            bool bNeedToThrow_RightToLeft = false; 
+            bool bNeedToThrow_LeftToRight = False;
+            bool bNeedToThrow_RightToLeft = False; 
 
             do
             {
@@ -125,12 +125,12 @@ namespace ComputerScience_Sorting_Lib
 
                     if (intPointerIndex_I > intPointerIndex_K) break;
 
-                } while (false == bNeedToThrow_LeftToRight);
+                } while (False == bNeedToThrow_LeftToRight);
 
 
                 //Have the two pointers croseed each other? 
                 bKeepLooping = (intPointerIndex_I < intPointerIndex_K);
-                if (false == bKeepLooping) break;
+                if (False == bKeepLooping) break;
 
 
                 //
@@ -149,18 +149,18 @@ namespace ComputerScience_Sorting_Lib
                     bKeepLooping = (intPointerIndex_I < intPointerIndex_K);
                     if (bKeepLooping) break;
 
-                } while (false == bNeedToThrow_LeftToRight);
+                } while (False == bNeedToThrow_LeftToRight);
 
                 //Unlikely to occur....
                 bKeepLooping = (intPointerIndex_I <= -1 + param_array.Length);
-                if (false == bKeepLooping) break;
+                if (False == bKeepLooping) break;
                 //Unlikely to occur....
                 bKeepLooping = (intPointerIndex_K >= 1);
-                if (false == bKeepLooping) break;
+                if (False == bKeepLooping) break;
 
                 //Have the two pointers croseed each other? 
                 bKeepLooping = (intPointerIndex_I < intPointerIndex_K);
-                if (false == bKeepLooping) break;
+                if (False == bKeepLooping) break;
 
                 //
                 //  Swap / Throw

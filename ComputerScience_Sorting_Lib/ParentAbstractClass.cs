@@ -57,7 +57,7 @@ namespace ComputerScience_Sorting_Lib
             // Added 3/3/2020 thomas downes  
             //
 
-            return false;
+            return False;
 
         }
 
