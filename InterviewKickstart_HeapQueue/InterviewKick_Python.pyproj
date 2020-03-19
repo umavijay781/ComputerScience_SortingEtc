@@ -5,7 +5,7 @@
     <ProjectGuid>fdd8205c-a317-4706-983d-b69758ad876f</ProjectGuid>
     <ProjectHome>
     </ProjectHome>
-    <StartupFile>HeapSort.py</StartupFile>
+    <StartupFile>moduleNQueens.py</StartupFile>
     <SearchPath>
     </SearchPath>
     <WorkingDirectory>.</WorkingDirectory>
@@ -29,6 +29,9 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="HeapSort.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="IK_RecursiveTemplate.py">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="moduleNQueens.py">
