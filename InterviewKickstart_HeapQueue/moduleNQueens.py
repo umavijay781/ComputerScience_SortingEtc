@@ -1,5 +1,5 @@
-
-import ClassNQueensSD
+# Added 3/18/2020 thomas downes
+from ClassNQueensSD import ClassNQueensSD
 
 #
 #
@@ -9,32 +9,37 @@ import ClassNQueensSD
 #
 #   ----3/17/2020 thoms downes 
 #
-def GetSolutions_NQueens(N_RowsColumnsQueens):
+def GetSolutions_NQueens_Overall(N_RowsColumnsQueens):
+    # Added 3/18/2020 thomas downes
     #
     #   
     #
     my_Subproblem = ClassNQueensSD(N_RowsColumnsQueens)
     my_PartialSolution = ClassNQueensSD(N_RowsColumnsQueens)
+    output_Results = []
+    NQueensHelper(my_Subproblem, my_PartialSolution, output_Results)
+    return output_Results
 
-
-
-def NQueens_Helper(par_Subproblem, par_PartialSolution):
+def NQueens_Helper(par_Subproblem, par_PartialSolution, par_Results):
+    # Added 3/18/2020 thomas downes
     #
     # Added 3/17/2020 thomas downes
     #
-    SubProblem = ClassNQueensSD(8)
-    PartialSolution = ClassNQueensSD(8) 
+    # par_SubProblem = ClassNQueensSD(8)
+    # par_PartialSolution = ClassNQueensSD(8) 
 
     #
     # Backtracking Case  
     #
-    if (PartialSolution.AttackDetected()):
+    if (par_PartialSolution.AttackDetected()):
         return
 
     #
-    # Base Case
+    # Base Case - Leaf Worker
     #
-    if (PartialSolution.Completed):
+    if (par_PartialSolution.Completed):
+        # Output the full solution.
+        par_Results.Add(par_PartialSolution.OutputArray())
         return
 
     #
@@ -42,18 +47,29 @@ def NQueens_Helper(par_Subproblem, par_PartialSolution):
     #
     boolAttack = False
 
-    for iColIndex in range(Subproblem.N_GeneralProblemSize):
+    for iColIndex in range(par_Subproblem.N_GeneralProblemSize):
         #
         # Recursive Call
         #
-        boolAttack = PartialSolution.AttackDetected_NextColumn(iColIndex)
+        boolAttack = par_PartialSolution.AttackDetected_NextColumn(iColIndex)
         if (False == boolAttack ):
             #
             # No Queen attacks are detected.  We can proceed
             #    with the recursive call. 
             #
-            PartialSolution.setColumnChoice_isItOkay(iColIndex)
-            NQueens_Helper(Subproblem, PartialSolution)
+            par_PartialSolution.setColumnChoice_isItOkay(iColIndex)
+            NQueens_Helper(par_Subproblem, par_PartialSolution, par_Results)
+    return 
+
+#
+#
+# Main Program 
+# 
+#
+Results = GetSolutions_NQueens_Overall(4)
+
+for each_ClassNQueens in Results:
+    print(each_ClassNQueens.Output_MasterString())
 
 
 

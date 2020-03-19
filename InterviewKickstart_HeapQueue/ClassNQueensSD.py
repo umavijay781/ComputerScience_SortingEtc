@@ -1,4 +1,5 @@
 class ClassNQueensSD():
+        # Added 3/18/2020 thomas downes
     """description of class"""
       #
     # N Queens Problem
@@ -10,6 +11,7 @@ class ClassNQueensSD():
     #   All numberings are top-to-bottom, left-to-right.  
     #
     def __init__(self, N_size = 2):
+        # Added 3/18/2020 thomas downes
         self.N_GeneralProblemSize = N_size
         ## self.AttackDetected = False
         self.N_numQueens = N_size ## self.N_GeneralProblemSize ## 2 ## Initialize. 
@@ -22,15 +24,15 @@ class ClassNQueensSD():
         self.RowIndex = 0
         self.ColumnsSelected_EachRow = []   ## [-1, -1, -1, -1, -1, -1, -1, -1]
 
-        for i in range(N_numRows):
+        for i in range(self.N_numRows):
             self.ColumnsSelected_EachRow.append(-1)  ## Initialize. 
 
         #
         # Columns
         #
         self.ColumnIsUsed = []
-        for i in range(N_numColumns):
-            self.ColumnIsUsed.append(false)  ## Initialize, no Queen present in the column. 
+        for i in range(self.N_numColumns):
+            self.ColumnIsUsed.append(False)  ## Initialize, no Queen present in the column. 
 
         #
         # Forward Diagonals ////
@@ -38,8 +40,8 @@ class ClassNQueensSD():
         self.DiagonalsForward_1Queen = [] ## ///////////   
         self.DiagonalsForward_Attack = [] ## ///////////   
         
-        for i in range(D_numDiagonalsLR):
-            self.DiagonalsForward.append(false)  ## Initialize, no Queen present in the diagonal. 
+        for i in range(self.D_numDiagonalsLR):
+            self.DiagonalsForward_1Queen.append(False)  ## Initialize, no Queen present in the diagonal. 
 
         #
         # Backward Diagonals \\\
@@ -53,6 +55,7 @@ class ClassNQueensSD():
 
 
     def AttackDetected_Columns(self):
+        # Added 3/18/2020 thomas downes
         sorted_array = self.ColumnsSelected_EachRow[:]
         sorted_array.sort()
         col_redundancy = False # Initialize.
@@ -66,6 +69,7 @@ class ClassNQueensSD():
 
 
     def AttackDetected_nextQueen(self, i_row, k_column):
+        # Added 3/18/2020 thomas downes
         #
         # Called by the following:
         #      setColumnChoice_isItOkay
@@ -85,6 +89,7 @@ class ClassNQueensSD():
 
 
     def AttackDetected_nextColumn(self, k_column):
+        # Added 3/18/2020 thomas downes
         #
         # Called by the following:
         #      setColumnChoice_isItOkay
@@ -94,6 +99,7 @@ class ClassNQueensSD():
 
 
     def setColumnChoice_isItOkay(self, k_column):
+        # Added 3/18/2020 thomas downes
         #
         # Check to see if the column choice would cause problems
         #   or not, i.e. violate the constraint filter. 
@@ -104,6 +110,8 @@ class ClassNQueensSD():
         return setColumnChoice_isItOkay_RowCol(self.RowIndex, k_column)
 
     def setColumnChoice_isItOkay_RowCol(self, i_row, k_column):
+        # Added 3/18/2020 thomas downes
+        #
         # Check to see if the column choice would cause problems
         #   or not, i.e. violate the constraint filter. 
         #
@@ -141,6 +149,7 @@ class ClassNQueensSD():
 
         
     def removeLastColumnChoice(self):
+        # Added 3/18/2020 thomas downes
         #
         # Remove the last prior column choice.
         #  
@@ -153,6 +162,44 @@ class ClassNQueensSD():
         self.DiagonalsBackslash_1Queen[i_row + k_column_inverse] = false # Indicate that this backslash diagonal \\ is __not occupied. 
         return 
 
+    def Output_Array(self):
+        # Added 3/18/2020 thomas downes
+        return copy.copy(self.ColumnsSelected_EachRow)
 
+    def Output_ArrayOfStrings(self):
+        # Added 3/18/2020 thomas downes
+        #
+        # This returns the following array of strings:
+        #
+        #    ---q, --q-, -q--, q---
+        #
+        #return copy.copy(self.ColumnsSelected_EachRow)
+        output_strings = []
+        output_row = ""
+        for i_row in range(self.N_numRows):
+            for k_col in range(self.N_numColumns):
+                if (self.ColumnsSelected_EachRow[i_row] == k_col):
+                    output_row = (output_row + "q")
+                else:
+                    output_row = (output_row + "-")
+            output_strings.append(output_row)
+        return output_strings
+
+    def Output_MasterString(self):
+        # Added 3/18/2020 thomas downes
+        #
+        # This returns the following string with carriage returns:
+        #
+        #    ---q
+        #    --q-
+        #    -q--
+        #    q---
+        #
+        output_strings = []
+        output_chessboard = ""
+        output_strings = Output_ArrayOfStrings()
+        for each_string in output_strings:
+            output_chessboard += (each_string + "\n")
+        return output_chessboard
 
 

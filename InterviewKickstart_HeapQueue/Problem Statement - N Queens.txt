@@ -70,11 +70,8 @@ Total number of lines in the output must be m*(n+1).
 For input n=4 one correct output is:
 
 -q--
-
 ---q
-
 q---
-
 --q-
 
 --q-
