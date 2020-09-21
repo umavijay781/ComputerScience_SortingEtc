@@ -1,0 +1,16 @@
+﻿<Window x:Class="MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:TestingSorts"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="250" Width="800">
+    <Grid>
+        <Label Content="Testing Sorting of Integers" FontSize="34"   ></Label>
+        <TextBox Text="2,34,76,23,14,89,2,3,6,16,15,99,34" Margin="23,59,45.6,0" 
+                 Height="34" VerticalAlignment="Top"></TextBox>
+        <Button Content="Load Integers" Width="100" Height="34" HorizontalAlignment="Left" Margin="157,98,0,0" VerticalAlignment="Top" d:LayoutOverrides="Width, Height" ></Button>
+        <Button Content="Start Sorting" Width="100" Height="34" d:LayoutOverrides="Width, Height" HorizontalAlignment="Left" Margin="296,98,0,0" VerticalAlignment="Top" />
+    </Grid>
+</Window>
